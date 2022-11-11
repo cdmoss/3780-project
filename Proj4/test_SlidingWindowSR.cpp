@@ -96,6 +96,14 @@ TEST_F(SlidingWindowSRTest, ack_loop_multiack) {
     ASSERT_EQ(s.getNrUnacked(), 0);
 }
 
+TEST_F(SlidingWindowSRTest, ack_resend) {
+    sr s(2, 3);
+    ASSERT_EQ(s.send(), 0);
+    ASSERT_EQ(s.send(), 1);
+    s.ack(1);
+    s.ack(1);
+}
+
 // TEST_F(SlidingWindowSRTest, send_loop) {
 //     sr s(4,3);
 //     ASSERT_EQ(s.send(), 0);
