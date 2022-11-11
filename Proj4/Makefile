@@ -1,6 +1,6 @@
 CC = g++
 TESTLIBS = -lgtest  -lgtest_main -lpthread
-OBJS = GoBackN.o test_GoBackN.o
+OBJS = SlidingWindowSR.o test_SlidingWindowSR.o
 # HEADERDIRS =
 # CCFLAGS = -I $(HEADERDIRS)
 
