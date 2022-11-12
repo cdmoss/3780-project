@@ -27,10 +27,9 @@ public:
     uint getWinSize();
     void setMaxSeqNum(uint size);
     uint getMaxSeqNum();
-    void setNrUnacked(uint nr);
     uint getNrUnacked();
-    void ack(uint ackedSeq);
     uint send();
+    void receiveAck(uint ackedSeq);
     void printStateVec();
 };
 #endif
