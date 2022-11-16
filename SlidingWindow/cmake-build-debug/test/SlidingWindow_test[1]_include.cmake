@@ -1,0 +1,5 @@
+if(EXISTS "/home/mbroughton/Programming/CPSC3780/SlidingWindow/cmake-build-debug/test/SlidingWindow_test[1]_tests.cmake")
+  include("/home/mbroughton/Programming/CPSC3780/SlidingWindow/cmake-build-debug/test/SlidingWindow_test[1]_tests.cmake")
+else()
+  add_test(SlidingWindow_test_NOT_BUILT SlidingWindow_test_NOT_BUILT)
+endif()
