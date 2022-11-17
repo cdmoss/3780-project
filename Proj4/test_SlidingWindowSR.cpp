@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>  // google test framework
-#include "SlidingWindowSR.h"
+#include "include/SlidingWindowSR.h"
 
 using namespace std;
 

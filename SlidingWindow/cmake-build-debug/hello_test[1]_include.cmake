@@ -1,5 +1,0 @@
-if(EXISTS "/home/mbroughton/Programming/CPSC3780/SlidingWindow/cmake-build-debug/hello_test[1]_tests.cmake")
-  include("/home/mbroughton/Programming/CPSC3780/SlidingWindow/cmake-build-debug/hello_test[1]_tests.cmake")
-else()
-  add_test(hello_test_NOT_BUILT hello_test_NOT_BUILT)
-endif()
