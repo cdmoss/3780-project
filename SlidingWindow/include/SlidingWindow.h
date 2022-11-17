@@ -9,34 +9,32 @@
 
 class SlidingWindow {
 private:
-    int windowSize{4};
-    std::deque<int> *slidingWindow;
+    unsigned int windowSize{4};
+    std::deque<unsigned int> *slidingWindow;
+    unsigned int numOfFrames{255};
+    unsigned int seqNumBits{3};
+    unsigned int maxSeqNum{7};
 
-private:
-    int numOfFrames{255};
-    int seqNumBits{3};
-    int maxSeqNum{7};
+    void initializeSlidingWindow(unsigned int windowSize);
 
 public:
-    SlidingWindow(int windowSize, int numOfFrames, int seqNumBits);
+    SlidingWindow(unsigned int windowSize, unsigned int numOfFrames, unsigned int seqNumBits);
 
     SlidingWindow();
 
     virtual ~SlidingWindow();
 
-    int getWindowSize() const;
+    unsigned int getWindowSize() const;
 
-    void setWindowSize(int windowSize);
+    void setWindowSize(unsigned int windowSize);
 
-    int getSeqNumBits() const;
+    unsigned int getSeqNumBits() const;
 
-    void setSeqNumBits(int seqNumBits);
+    void setSeqNumBits(unsigned int seqNumBits);
 
-    void move(int seqNum);
+    void move(unsigned int seqNum);
 
-    std::deque<int> *getSlidingWindow() const;
-
-    void setSlidingWindow(std::deque<int> *slidingWindow);
+    std::deque<unsigned int> *getSlidingWindow() const;
 };
 
 #endif //SLIDINGWINDOW_SLIDINGWINDOW_H
