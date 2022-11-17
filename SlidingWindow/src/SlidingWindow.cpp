@@ -4,15 +4,13 @@
 
 #include "../include/SlidingWindow.h"
 #include <cassert>
-#include <deque>
 #include <cmath>
 #include <iostream>
 #include <algorithm>
 
-SlidingWindow::SlidingWindow(unsigned int windowSize, unsigned int numOfFrames, unsigned int seqNumBits) {
+SlidingWindow::SlidingWindow(unsigned int windowSize, unsigned int seqNumBits) {
     assert(windowSize <= pow(seqNumBits, 2));
     SlidingWindow::windowSize = windowSize;
-    SlidingWindow::numOfFrames = numOfFrames;
     SlidingWindow::seqNumBits = seqNumBits;
     maxSeqNum = pow(seqNumBits, 2) - 1;
     initializeSlidingWindow(windowSize);
@@ -38,6 +36,7 @@ void SlidingWindow::setWindowSize(unsigned int windowSize) {
 }
 
 void SlidingWindow::move(unsigned int seqNum) {
+    assert(slidingWindow != nullptr);
     /**
      * Check to ensure seqNum is in the slidingWindow
      */
@@ -45,13 +44,6 @@ void SlidingWindow::move(unsigned int seqNum) {
 
     while (slidingWindow -> front() != seqNum) {
         unsigned int lastSeqNum = slidingWindow -> back();
-        /*
-        numOfFrames--;
-        if (numOfFrames == 0) {
-            std::cout << "All frames sent successfully!" << std::endl;
-            break;
-        }
-         */
         slidingWindow -> pop_front();
         if (lastSeqNum == maxSeqNum) {
             slidingWindow -> push_back(0);
@@ -70,7 +62,7 @@ void SlidingWindow::setSeqNumBits(unsigned int seqNumBits) {
     SlidingWindow::seqNumBits = seqNumBits;
 }
 
-std::deque<unsigned int> *SlidingWindow::getSlidingWindow() const {
+std::deque<unsigned int> *SlidingWindow::getSlidingWindow() {
     return slidingWindow;
 }
 
@@ -87,9 +79,15 @@ void SlidingWindow::initializeSlidingWindow(unsigned int windowSize) {
 }
 
 void SlidingWindow::printSlidingWindow(std::deque<unsigned int> *d) {
+    assert(slidingWindow != nullptr);
     std::cout << "\n";
     for (auto it = d -> begin(); it != d -> end(); ++it) {
         std::cout << ' ' << *it;
     }
     std::cout << std::endl;
+}
+
+unsigned int SlidingWindow::getLastSeqNum() {
+    assert(slidingWindow != nullptr);
+    return lastSeqNum;
 }
