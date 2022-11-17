@@ -1,0 +1,39 @@
+\hypertarget{SlidingWindowSR_8h_source}{}\doxysection{Sliding\+Window\+SR.\+h}
+\label{SlidingWindowSR_8h_source}\index{/home/chase/school-\/coding/3780/3780-\/project/Proj4/include/SlidingWindowSR.h@{/home/chase/school-\/coding/3780/3780-\/project/Proj4/include/SlidingWindowSR.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_SLIDING\_WINDOW}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_SLIDING\_WINDOW}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} uint;}
+\DoxyCodeLine{9 \textcolor{keyword}{typedef} vector<unsigned int> uintvec;}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{classSlidingWindowSR}{SlidingWindowSR}} \{}
+\DoxyCodeLine{15 \textcolor{keyword}{private}:}
+\DoxyCodeLine{19     uint winSize;}
+\DoxyCodeLine{23     uint maxSeqNum;}
+\DoxyCodeLine{30     uintvec stateVec;}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{35     \textcolor{keywordtype}{int} lastSent = -\/1;}
+\DoxyCodeLine{39     \textcolor{keywordtype}{int} lastAck = -\/1;}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{keyword}{public}:}
+\DoxyCodeLine{42     \mbox{\hyperlink{classSlidingWindowSR}{SlidingWindowSR}}();}
+\DoxyCodeLine{46     \mbox{\hyperlink{classSlidingWindowSR}{SlidingWindowSR}}(uint \_winSize, uint \_seqNum);}
+\DoxyCodeLine{50     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classSlidingWindowSR_a4f9b9f333544e2990ee2c4ff21dc40e2}{canSend}}();}
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} \mbox{\hyperlink{classSlidingWindowSR_a9188ebbdf3559fcf06014c78c041ad5d}{setWinSize}}(uint size);}
+\DoxyCodeLine{58     uint \mbox{\hyperlink{classSlidingWindowSR_abb61e2af6f4dd0c05b8af8ef406b6c4b}{getWinSize}}();}
+\DoxyCodeLine{62     \textcolor{keywordtype}{void} \mbox{\hyperlink{classSlidingWindowSR_a17a3a5c1ad59dacf902451ea863c0c33}{setMaxSeqNum}}(uint size);}
+\DoxyCodeLine{66     uint \mbox{\hyperlink{classSlidingWindowSR_a2846e7abd8c5bfb6620b8d2c2d9c8543}{getMaxSeqNum}}();}
+\DoxyCodeLine{70     uint \mbox{\hyperlink{classSlidingWindowSR_aa70e5e3e903f29dcc151222a737b05c0}{getNrUnacked}}();}
+\DoxyCodeLine{74     uint \mbox{\hyperlink{classSlidingWindowSR_aa63dd9a2800d3b6d23eb536543d12118}{send}}();}
+\DoxyCodeLine{78     \textcolor{keywordtype}{void} \mbox{\hyperlink{classSlidingWindowSR_a241a654feb463ffc0ad7204e2084f56d}{receiveAck}}(uint ackedSeq);}
+\DoxyCodeLine{82     \textcolor{keywordtype}{void} \mbox{\hyperlink{classSlidingWindowSR_a5b5364b72fdbcd3ae347cb8b96d333fa}{printStateVec}}();}
+\DoxyCodeLine{83 \};}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

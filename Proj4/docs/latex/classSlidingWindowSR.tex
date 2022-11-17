@@ -1,0 +1,104 @@
+\hypertarget{classSlidingWindowSR}{}\doxysection{Sliding\+Window\+SR Class Reference}
+\label{classSlidingWindowSR}\index{SlidingWindowSR@{SlidingWindowSR}}
+
+
+{\ttfamily \#include $<$Sliding\+Window\+SR.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSlidingWindowSR_a827a9808db5a6131e25bda22b1450657}{Sliding\+Window\+SR}} (uint \+\_\+win\+Size, uint \+\_\+seq\+Num)
+\item 
+bool \mbox{\hyperlink{classSlidingWindowSR_a4f9b9f333544e2990ee2c4ff21dc40e2}{can\+Send}} ()
+\item 
+void \mbox{\hyperlink{classSlidingWindowSR_a9188ebbdf3559fcf06014c78c041ad5d}{set\+Win\+Size}} (uint size)
+\item 
+uint \mbox{\hyperlink{classSlidingWindowSR_abb61e2af6f4dd0c05b8af8ef406b6c4b}{get\+Win\+Size}} ()
+\item 
+void \mbox{\hyperlink{classSlidingWindowSR_a17a3a5c1ad59dacf902451ea863c0c33}{set\+Max\+Seq\+Num}} (uint size)
+\item 
+uint \mbox{\hyperlink{classSlidingWindowSR_a2846e7abd8c5bfb6620b8d2c2d9c8543}{get\+Max\+Seq\+Num}} ()
+\item 
+uint \mbox{\hyperlink{classSlidingWindowSR_aa70e5e3e903f29dcc151222a737b05c0}{get\+Nr\+Unacked}} ()
+\item 
+uint \mbox{\hyperlink{classSlidingWindowSR_aa63dd9a2800d3b6d23eb536543d12118}{send}} ()
+\item 
+void \mbox{\hyperlink{classSlidingWindowSR_a241a654feb463ffc0ad7204e2084f56d}{receive\+Ack}} (uint acked\+Seq)
+\item 
+void \mbox{\hyperlink{classSlidingWindowSR_a5b5364b72fdbcd3ae347cb8b96d333fa}{print\+State\+Vec}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the main class that provides all members for maintaining the selective repeat sliding window communication between a sender and a receiver 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSlidingWindowSR_a827a9808db5a6131e25bda22b1450657}\label{classSlidingWindowSR_a827a9808db5a6131e25bda22b1450657}} 
+\index{SlidingWindowSR@{SlidingWindowSR}!SlidingWindowSR@{SlidingWindowSR}}
+\index{SlidingWindowSR@{SlidingWindowSR}!SlidingWindowSR@{SlidingWindowSR}}
+\doxysubsubsection{\texorpdfstring{SlidingWindowSR()}{SlidingWindowSR()}}
+{\footnotesize\ttfamily Sliding\+Window\+SR\+::\+Sliding\+Window\+SR (\begin{DoxyParamCaption}\item[{uint}]{\+\_\+win\+Size,  }\item[{uint}]{\+\_\+seq\+Num }\end{DoxyParamCaption})}
+
+Constructor that sets the window size and max sequence number 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSlidingWindowSR_a4f9b9f333544e2990ee2c4ff21dc40e2}\label{classSlidingWindowSR_a4f9b9f333544e2990ee2c4ff21dc40e2}} 
+\index{SlidingWindowSR@{SlidingWindowSR}!canSend@{canSend}}
+\index{canSend@{canSend}!SlidingWindowSR@{SlidingWindowSR}}
+\doxysubsubsection{\texorpdfstring{canSend()}{canSend()}}
+{\footnotesize\ttfamily bool Sliding\+Window\+SR\+::can\+Send (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns true if sender is able to send a new sequence number, else returns false \mbox{\Hypertarget{classSlidingWindowSR_a2846e7abd8c5bfb6620b8d2c2d9c8543}\label{classSlidingWindowSR_a2846e7abd8c5bfb6620b8d2c2d9c8543}} 
+\index{SlidingWindowSR@{SlidingWindowSR}!getMaxSeqNum@{getMaxSeqNum}}
+\index{getMaxSeqNum@{getMaxSeqNum}!SlidingWindowSR@{SlidingWindowSR}}
+\doxysubsubsection{\texorpdfstring{getMaxSeqNum()}{getMaxSeqNum()}}
+{\footnotesize\ttfamily uint Sliding\+Window\+SR\+::get\+Max\+Seq\+Num (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get max sequence number \mbox{\Hypertarget{classSlidingWindowSR_aa70e5e3e903f29dcc151222a737b05c0}\label{classSlidingWindowSR_aa70e5e3e903f29dcc151222a737b05c0}} 
+\index{SlidingWindowSR@{SlidingWindowSR}!getNrUnacked@{getNrUnacked}}
+\index{getNrUnacked@{getNrUnacked}!SlidingWindowSR@{SlidingWindowSR}}
+\doxysubsubsection{\texorpdfstring{getNrUnacked()}{getNrUnacked()}}
+{\footnotesize\ttfamily uint Sliding\+Window\+SR\+::get\+Nr\+Unacked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get max sequence number \mbox{\Hypertarget{classSlidingWindowSR_abb61e2af6f4dd0c05b8af8ef406b6c4b}\label{classSlidingWindowSR_abb61e2af6f4dd0c05b8af8ef406b6c4b}} 
+\index{SlidingWindowSR@{SlidingWindowSR}!getWinSize@{getWinSize}}
+\index{getWinSize@{getWinSize}!SlidingWindowSR@{SlidingWindowSR}}
+\doxysubsubsection{\texorpdfstring{getWinSize()}{getWinSize()}}
+{\footnotesize\ttfamily uint Sliding\+Window\+SR\+::get\+Win\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the window size \mbox{\Hypertarget{classSlidingWindowSR_a5b5364b72fdbcd3ae347cb8b96d333fa}\label{classSlidingWindowSR_a5b5364b72fdbcd3ae347cb8b96d333fa}} 
+\index{SlidingWindowSR@{SlidingWindowSR}!printStateVec@{printStateVec}}
+\index{printStateVec@{printStateVec}!SlidingWindowSR@{SlidingWindowSR}}
+\doxysubsubsection{\texorpdfstring{printStateVec()}{printStateVec()}}
+{\footnotesize\ttfamily void Sliding\+Window\+SR\+::print\+State\+Vec (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Prints out the current state of the sequence number range vector \mbox{\Hypertarget{classSlidingWindowSR_a241a654feb463ffc0ad7204e2084f56d}\label{classSlidingWindowSR_a241a654feb463ffc0ad7204e2084f56d}} 
+\index{SlidingWindowSR@{SlidingWindowSR}!receiveAck@{receiveAck}}
+\index{receiveAck@{receiveAck}!SlidingWindowSR@{SlidingWindowSR}}
+\doxysubsubsection{\texorpdfstring{receiveAck()}{receiveAck()}}
+{\footnotesize\ttfamily void Sliding\+Window\+SR\+::receive\+Ack (\begin{DoxyParamCaption}\item[{uint}]{acked\+Seq }\end{DoxyParamCaption})}
+
+Recieves a given acked sequence number -\/ updates the internal state of the sender \mbox{\Hypertarget{classSlidingWindowSR_aa63dd9a2800d3b6d23eb536543d12118}\label{classSlidingWindowSR_aa63dd9a2800d3b6d23eb536543d12118}} 
+\index{SlidingWindowSR@{SlidingWindowSR}!send@{send}}
+\index{send@{send}!SlidingWindowSR@{SlidingWindowSR}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily uint Sliding\+Window\+SR\+::send (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Calculates the sequence number that should be sent next, or returns -\/1 if no sequence number should be sent, \mbox{\Hypertarget{classSlidingWindowSR_a17a3a5c1ad59dacf902451ea863c0c33}\label{classSlidingWindowSR_a17a3a5c1ad59dacf902451ea863c0c33}} 
+\index{SlidingWindowSR@{SlidingWindowSR}!setMaxSeqNum@{setMaxSeqNum}}
+\index{setMaxSeqNum@{setMaxSeqNum}!SlidingWindowSR@{SlidingWindowSR}}
+\doxysubsubsection{\texorpdfstring{setMaxSeqNum()}{setMaxSeqNum()}}
+{\footnotesize\ttfamily void Sliding\+Window\+SR\+::set\+Max\+Seq\+Num (\begin{DoxyParamCaption}\item[{uint}]{size }\end{DoxyParamCaption})}
+
+Sets the max sequence number \mbox{\Hypertarget{classSlidingWindowSR_a9188ebbdf3559fcf06014c78c041ad5d}\label{classSlidingWindowSR_a9188ebbdf3559fcf06014c78c041ad5d}} 
+\index{SlidingWindowSR@{SlidingWindowSR}!setWinSize@{setWinSize}}
+\index{setWinSize@{setWinSize}!SlidingWindowSR@{SlidingWindowSR}}
+\doxysubsubsection{\texorpdfstring{setWinSize()}{setWinSize()}}
+{\footnotesize\ttfamily void Sliding\+Window\+SR\+::set\+Win\+Size (\begin{DoxyParamCaption}\item[{uint}]{size }\end{DoxyParamCaption})}
+
+Sets the window size 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/chase/school-\/coding/3780/3780-\/project/\+Proj4/include/Sliding\+Window\+SR.\+h\item 
+/home/chase/school-\/coding/3780/3780-\/project/\+Proj4/src/Sliding\+Window\+SR.\+cpp\end{DoxyCompactItemize}
