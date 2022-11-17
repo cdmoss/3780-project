@@ -52,11 +52,12 @@ void SlidingWindow::move(unsigned int seqNum) {
             break;
         }
          */
-        slidingWindow->pop_front();
+        slidingWindow -> pop_front();
         if (lastSeqNum == maxSeqNum) {
             slidingWindow -> push_back(0);
         } else {
             slidingWindow -> push_back(lastSeqNum + 1);
+        }
     }
 }
 
@@ -74,13 +75,21 @@ std::deque<unsigned int> *SlidingWindow::getSlidingWindow() const {
 }
 
 void SlidingWindow::initializeSlidingWindow(unsigned int windowSize) {
-    if (!slidingWindow -> empty()) {
-        slidingWindow -> clear();
-    } else {
+    if (slidingWindow == nullptr) {
         slidingWindow = new std::deque<unsigned int>;
+    } else {
+        slidingWindow -> clear();
     }
 
     for (unsigned int i = 0; i < windowSize; i++) {
-        slidingWindow -> push_front(i);
+        slidingWindow -> push_back(i);
     }
+}
+
+void SlidingWindow::printSlidingWindow(std::deque<unsigned int> *d) {
+    std::cout << "\n";
+    for (auto it = d -> begin(); it != d -> end(); ++it) {
+        std::cout << ' ' << *it;
+    }
+    std::cout << std::endl;
 }

@@ -21,10 +21,14 @@ protected:
 };
 
 TEST_F(SlidingWindowTest, move) {
-    auto *d = new std::deque<unsigned int> {1, 2, 3, 4};
-    //sw -> move(0);
-    //sw -> getSlidingWindow();
-    //ASSERT_TRUE(sw -> getSlidingWindow() == d);
-    delete d;
+    std::deque<unsigned int> *d = new std::deque<unsigned int> {1, 2, 3, 4};
+    sw -> move(1);
+    ASSERT_EQ(*(sw -> getSlidingWindow()), *d);
+
+    sw -> move(3);
+
+    *d = {6, 7, 0, 1};
+    sw -> move(6);
+    ASSERT_EQ(*(sw -> getSlidingWindow()), *d);
     d = nullptr;
 }
