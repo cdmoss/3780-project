@@ -10,15 +10,15 @@
 class SlidingWindow {
 private:
     unsigned int windowSize{4};
-    std::deque<unsigned int> *slidingWindow;
-    unsigned int numOfFrames{255};
+    std::deque<unsigned int> *slidingWindow = nullptr;
     unsigned int seqNumBits{3};
     unsigned int maxSeqNum{7};
+    unsigned int lastSeqNum = slidingWindow -> back();
 
     void initializeSlidingWindow(unsigned int windowSize);
 
 public:
-    SlidingWindow(unsigned int windowSize, unsigned int numOfFrames, unsigned int seqNumBits);
+    SlidingWindow(unsigned int windowSize, unsigned int seqNumBits);
 
     SlidingWindow();
 
@@ -34,7 +34,11 @@ public:
 
     void move(unsigned int seqNum);
 
-    std::deque<unsigned int> *getSlidingWindow() const;
+    std::deque<unsigned int> *getSlidingWindow();
+
+    void printSlidingWindow(std::deque<unsigned int> *d);
+
+    unsigned int getLastSeqNum();
 };
 
 #endif //SLIDINGWINDOW_SLIDINGWINDOW_H
