@@ -6,7 +6,21 @@ add_executable(
         SlidingWindow_test
         src/SlidingWindow.cpp
         include/SlidingWindow.h
-        SlidingWindow_test.cpp
+        test/SlidingWindow_test.cpp
+)
+
+add_executable(
+        Receiver_test
+        test/Receiver_test.cpp
+        include/Receiver.h
+        src/Receiver.cpp
+)
+
+add_executable(
+        Sender_test
+        test/Sender_test.cpp
+        include/Sender.h
+        src/Receiver.cpp
 )
 
 include(FetchContent)
@@ -22,5 +36,15 @@ enable_testing()
 
 target_link_libraries(
         SlidingWindow_test
+        GTest::gtest_main
+)
+
+target_link_libraries(
+        Receiver_test
+        GTest::gtest_main
+)
+
+target_link_libraries(
+        Sender_test
         GTest::gtest_main
 )

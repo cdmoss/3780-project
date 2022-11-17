@@ -3,8 +3,7 @@
 //
 
 #include "../include/Receiver.h"
-#include <set>
-#include <map>
+#include <iostream>
 
 Receiver::Receiver() {
     slidingWindow = new SlidingWindow();
@@ -14,6 +13,10 @@ Receiver::Receiver() {
 Receiver::Receiver(SlidingWindow* slidingWindow) {
     Receiver::slidingWindow = slidingWindow;
     initializeFrameBuffer();
+}
+
+std::set<unsigned int>* Receiver::getFrameBuffer() const {
+    return frameBuffer;
 }
 
 Receiver::~Receiver() {
@@ -27,13 +30,9 @@ void Receiver::initializeFrameBuffer() {
     frameBuffer = new std::set<unsigned int>;
 }
 
-unsigned int Receiver::getNumOfFrames() const {
-    return numOfFrames;
-}
-
 void Receiver::printFrameBuffer(std::set<unsigned int> *s) {
     std::cout << "\n";
-    for (auto it = d -> begin(); it != d -> end(); ++it) {
+    for (auto it = s -> begin(); it != s -> end(); ++it) {
         std::cout << ' ' << *it;
     }
     std::cout << std::endl;
@@ -43,17 +42,18 @@ SlidingWindow*  Receiver::getSlidingWindow() {
     return slidingWindow;
 }
 
-std::map<unsigned, std::set<unsigned int>> Receiver::receive(unsigned int seqNum) {
+std::map<unsigned, std::set<unsigned int>*> Receiver::receive(unsigned int seqNum) {
     if (seqNum != slidingWindow -> getLastSeqNum()) {
         frameBuffer -> insert(seqNum);
     } else {
-        slidingWindow -> getSlidingWindow() -> move(seqNum);
-        while (frameBuffer -> begin() == slidingWindow -> getLastSeqNum() && !frameBuffer -> empty()) {
-            slidingWindow -> getSlidingWindow() -> move(frameBuffer -> begin());
-            frameBuffer -> erase(frameBuffer -> begin());
+        slidingWindow -> move(seqNum);
+        auto frameBufferFirstElement = frameBuffer -> begin();
+        while (*frameBufferFirstElement == slidingWindow -> getLastSeqNum() && !frameBuffer -> empty()) {
+            slidingWindow -> move(*frameBufferFirstElement);
+            frameBuffer -> erase(frameBufferFirstElement);
         }
     }
-    std::map<unsigned, std::set<unsigned int>> acknowledgement;
-    acknowledgement.insert(slidingWindow -> getLastSeqNum(), frameBuffer);
+    std::map<unsigned int, std::set<unsigned int>*> acknowledgement;
+    acknowledgement.insert({slidingWindow -> getLastSeqNum(), frameBuffer});
     return acknowledgement;
 }

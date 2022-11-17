@@ -3,7 +3,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "include/SlidingWindow.h"
+#include "../include/SlidingWindow.h"
 #include <deque>
 
 class SlidingWindowTest : public testing::Test {
@@ -21,14 +21,14 @@ protected:
 };
 
 TEST_F(SlidingWindowTest, move) {
-    std::deque<unsigned int> *d = new std::deque<unsigned int> {1, 2, 3, 4};
+    std::deque<unsigned int> d = {1, 2, 3, 4};
     sw -> move(1);
-    ASSERT_EQ(*(sw -> getSlidingWindow()), *d);
+    ASSERT_EQ(*(sw -> getSlidingWindow()), d);
+
 
     sw -> move(3);
 
-    *d = {6, 7, 0, 1};
+    d = {6, 7, 0, 1};
     sw -> move(6);
-    ASSERT_EQ(*(sw -> getSlidingWindow()), *d);
-    d = nullptr;
+    ASSERT_EQ(*(sw -> getSlidingWindow()), d);
 }

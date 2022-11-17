@@ -89,5 +89,5 @@ void SlidingWindow::printSlidingWindow(std::deque<unsigned int> *d) {
 
 unsigned int SlidingWindow::getLastSeqNum() {
     assert(slidingWindow != nullptr);
-    return lastSeqNum;
+    return slidingWindow -> back();
 }

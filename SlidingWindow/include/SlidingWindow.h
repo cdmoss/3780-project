@@ -13,7 +13,6 @@ private:
     std::deque<unsigned int> *slidingWindow = nullptr;
     unsigned int seqNumBits{3};
     unsigned int maxSeqNum{7};
-    unsigned int lastSeqNum = slidingWindow -> back();
 
     void initializeSlidingWindow(unsigned int windowSize);
 

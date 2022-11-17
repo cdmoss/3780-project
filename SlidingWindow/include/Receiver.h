@@ -7,20 +7,21 @@
 
 #include "SlidingWindow.h"
 #include <set>
+#include <map>
 
 class Receiver {
 private:
-    std::set<unsigned int> frameBuffer = nullptr;
+    std::set<unsigned int> *frameBuffer = nullptr;
     void initializeFrameBuffer();
     SlidingWindow *slidingWindow;
 public:
     Receiver();
     Receiver(SlidingWindow* slidingWindow);
     ~Receiver();
-    std::set<unsigned int> getFrameBuffer() const;
+    std::set<unsigned int> *getFrameBuffer() const;
     void printFrameBuffer(std::set<unsigned int> *s);
     SlidingWindow  *getSlidingWindow();
-    void receive();
+    std::map<unsigned int, std::set<unsigned int>*> receive(unsigned int seqNum);
 };
 
 #endif //SLIDINGWINDOW_RECEIVER_H
