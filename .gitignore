@@ -1,8 +1,7 @@
 *.o
 */testSH
-/SlidingWindow/.idea
-/SlidingWindow/build
-/Proj4/.idea
-/Proj4/build
-/Proj4/cmake-build-debug
-.vscode
+cd*/.idea/
+*/build/
+*/.idea
+*/cmake-build-debug
+*/.vscode/
