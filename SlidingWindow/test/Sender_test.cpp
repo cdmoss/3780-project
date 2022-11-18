@@ -21,29 +21,25 @@ TEST_F(SenderTest, send) {
     std::set<unsigned int> *set;
 
     // send returns ack
-    auto ack = s -> send(r, 0);
-    auto ackMap = ack.begin();
+    r ->receive(0);
     set = new std::set<unsigned int> {};
 
-    ASSERT_EQ(0, ackMap -> first);
-    ASSERT_EQ(*set, *(ackMap -> second));
+    ASSERT_EQ(0, r -> getSlidingWindow() -> getFirstSeqNum());
+    ASSERT_EQ(*(set), *(r -> getFrameBuffer()));
 
-    s -> send(r, 2);
-    s -> send(r, 3);
-    ack = s -> send(r, 3);
-    ackMap = ack.begin();
+    r ->receive(2);
+    r ->receive(3);
 
     *set = {2, 3};
 
-    ASSERT_EQ(0, ackMap -> first);
-    ASSERT_EQ(*set, *(ackMap -> second));
+    ASSERT_EQ(0, r -> getSlidingWindow() -> getFirstSeqNum());
+    ASSERT_EQ(*(set), *(r -> getFrameBuffer()));
 
-    ack = s -> send(r, 1);
-    ackMap = ack.begin();
+    r ->receive(1);
     *set = {};
 
-    ASSERT_EQ(3, ackMap -> first);
-    ASSERT_EQ(*set, *(ackMap -> second));
+    ASSERT_EQ(3, r -> getSlidingWindow() -> getFirstSeqNum());
+    ASSERT_EQ(*(set), *(r -> getFrameBuffer()));
 
     delete set;
     delete r;
@@ -54,18 +50,18 @@ TEST_F(SenderTest, send) {
 TEST_F(SenderTest, receiveAck) {
     Receiver *r = new Receiver();
     std::deque<unsigned int> d = {1, 2, 3, 4};
-    s ->receiveAck(s -> send(r, 0));
+    s ->receiveAck(s -> send(r));
 
     ASSERT_EQ(s -> getNumOfFrames(), 254);
     ASSERT_EQ(*(s -> getSlidingWindow() -> getSlidingWindow()), d);
 
-    s ->receiveAck(s -> send(r, 2));
-    s ->receiveAck(s -> send(r, 3));
+    s ->receiveAck(s -> send(r));
+    s ->receiveAck(s -> send(r));
 
     ASSERT_EQ(s -> getNumOfFrames(), 254);
     ASSERT_EQ(*(s -> getSlidingWindow() -> getSlidingWindow()), d);
 
-    s ->receiveAck(s -> send(r, 1));
+    s ->receiveAck(s -> send(r));
 
     d = {4, 5, 6, 7};
 

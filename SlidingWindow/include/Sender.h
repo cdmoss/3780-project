@@ -21,7 +21,7 @@ public:
     unsigned int getNumOfFrames() const;
     void setNumOfFrames(unsigned int numOfFrames);
     SlidingWindow  *getSlidingWindow();
-    std::map<unsigned, std::set<unsigned int>*> send(Receiver *r, unsigned int seqNum);
-    void receiveAck(std::map<unsigned int, std::set<unsigned int>*> acknowledgement);
+    std::pair<unsigned, std::set<unsigned int>*> send(Receiver *r);
+    void receiveAck(std::pair<unsigned int, std::set<unsigned int>*> acknowledgement);
 };
 #endif //SLIDINGWINDOW_SENDER_H

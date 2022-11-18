@@ -7,7 +7,7 @@
 
 #include "SlidingWindow.h"
 #include <set>
-#include <map>
+#include <utility>
 
 class Receiver {
 private:
@@ -21,7 +21,7 @@ public:
     std::set<unsigned int> *getFrameBuffer() const;
     void printFrameBuffer(std::set<unsigned int> *s);
     SlidingWindow  *getSlidingWindow();
-    std::map<unsigned int, std::set<unsigned int>*> receive(unsigned int seqNum);
+    std::pair<unsigned int, std::set<unsigned int>*> receive(unsigned int seqNum);
     unsigned int getFirstFrameBufferElement() const;
 };
 
