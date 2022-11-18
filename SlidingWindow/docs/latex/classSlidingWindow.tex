@@ -1,0 +1,77 @@
+\hypertarget{classSlidingWindow}{}\doxysection{Sliding\+Window Class Reference}
+\label{classSlidingWindow}\index{SlidingWindow@{SlidingWindow}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSlidingWindow_a36a51e9b2a4d35e9cd78ce643cca83b9}{Sliding\+Window}} (unsigned int window\+Size, unsigned int seq\+Num\+Bits)
+\item 
+\mbox{\hyperlink{classSlidingWindow_a5fde76017cc202055cf3ae3011258106}{Sliding\+Window}} ()
+\item 
+\mbox{\Hypertarget{classSlidingWindow_ae3146fca66b38f4d49b78a2062dfeac2}\label{classSlidingWindow_ae3146fca66b38f4d49b78a2062dfeac2}} 
+unsigned int {\bfseries get\+Window\+Size} () const
+\item 
+\mbox{\Hypertarget{classSlidingWindow_a48c65f4226575c404b948db82d172ceb}\label{classSlidingWindow_a48c65f4226575c404b948db82d172ceb}} 
+void {\bfseries set\+Window\+Size} (unsigned int window\+Size)
+\item 
+\mbox{\Hypertarget{classSlidingWindow_a3c4ee78682f1ef32564f66f70d1ae662}\label{classSlidingWindow_a3c4ee78682f1ef32564f66f70d1ae662}} 
+unsigned int {\bfseries get\+Seq\+Num\+Bits} () const
+\item 
+\mbox{\Hypertarget{classSlidingWindow_acc7d366087cc17409910ac5321bf68d2}\label{classSlidingWindow_acc7d366087cc17409910ac5321bf68d2}} 
+void {\bfseries set\+Seq\+Num\+Bits} (unsigned int seq\+Num\+Bits)
+\item 
+unsigned int \mbox{\hyperlink{classSlidingWindow_aff04b46b13eb9c29a8ffd58056c45d81}{move}} (unsigned int seq\+Num)
+\item 
+\mbox{\Hypertarget{classSlidingWindow_adff5188e9b123aa0bedafab7ba4fa2e8}\label{classSlidingWindow_adff5188e9b123aa0bedafab7ba4fa2e8}} 
+std\+::deque$<$ unsigned int $>$ $\ast$ {\bfseries get\+Sliding\+Window} ()
+\item 
+\mbox{\Hypertarget{classSlidingWindow_a4bcfd534e78c7928a2a4c728d4b2e955}\label{classSlidingWindow_a4bcfd534e78c7928a2a4c728d4b2e955}} 
+void {\bfseries print\+Sliding\+Window} (std\+::deque$<$ unsigned int $>$ $\ast$d)
+\item 
+\mbox{\Hypertarget{classSlidingWindow_a702062ffc89e270c7f5279f348522713}\label{classSlidingWindow_a702062ffc89e270c7f5279f348522713}} 
+unsigned int {\bfseries get\+Last\+Seq\+Num} ()
+\item 
+\mbox{\Hypertarget{classSlidingWindow_a12ff18b27b5d7d531fccfaff833a8ff5}\label{classSlidingWindow_a12ff18b27b5d7d531fccfaff833a8ff5}} 
+unsigned int {\bfseries get\+First\+Seq\+Num} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSlidingWindow_a36a51e9b2a4d35e9cd78ce643cca83b9}\label{classSlidingWindow_a36a51e9b2a4d35e9cd78ce643cca83b9}} 
+\index{SlidingWindow@{SlidingWindow}!SlidingWindow@{SlidingWindow}}
+\index{SlidingWindow@{SlidingWindow}!SlidingWindow@{SlidingWindow}}
+\doxysubsubsection{\texorpdfstring{SlidingWindow()}{SlidingWindow()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Sliding\+Window\+::\+Sliding\+Window (\begin{DoxyParamCaption}\item[{unsigned int}]{window\+Size,  }\item[{unsigned int}]{seq\+Num\+Bits }\end{DoxyParamCaption})}
+
+Constructor validates that max sequence num given num bits will not exceed window size, then sets windows size and calculates max sequence num from num bits and sets it, then initializes sliding window 
+\begin{DoxyParams}{Parameters}
+{\em window\+Size} & the maximum size of the sliding window \\
+\hline
+{\em seq\+Num\+Bits} & the number of header bits used to store the sequence number \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSlidingWindow_a5fde76017cc202055cf3ae3011258106}\label{classSlidingWindow_a5fde76017cc202055cf3ae3011258106}} 
+\index{SlidingWindow@{SlidingWindow}!SlidingWindow@{SlidingWindow}}
+\index{SlidingWindow@{SlidingWindow}!SlidingWindow@{SlidingWindow}}
+\doxysubsubsection{\texorpdfstring{SlidingWindow()}{SlidingWindow()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Sliding\+Window\+::\+Sliding\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default constructor that uses default values for window size (4) and seq\+Num\+Bits (7) 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSlidingWindow_aff04b46b13eb9c29a8ffd58056c45d81}\label{classSlidingWindow_aff04b46b13eb9c29a8ffd58056c45d81}} 
+\index{SlidingWindow@{SlidingWindow}!move@{move}}
+\index{move@{move}!SlidingWindow@{SlidingWindow}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily unsigned int Sliding\+Window\+::move (\begin{DoxyParamCaption}\item[{unsigned int}]{seq\+Num }\end{DoxyParamCaption})}
+
+Slides the window forward to the given sequence number 
+\begin{DoxyParams}{Parameters}
+{\em seq\+Num} & the seq number to slide the window to \\
+\hline
+\end{DoxyParams}
+Check to ensure seq\+Num is in the sliding\+Window
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/chase/school-\/coding/3780/3780-\/project/\+Sliding\+Window/include/Sliding\+Window.\+h\item 
+/home/chase/school-\/coding/3780/3780-\/project/\+Sliding\+Window/src/Sliding\+Window.\+cpp\end{DoxyCompactItemize}

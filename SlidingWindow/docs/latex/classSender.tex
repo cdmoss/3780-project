@@ -1,0 +1,44 @@
+\hypertarget{classSender}{}\doxysection{Sender Class Reference}
+\label{classSender}\index{Sender@{Sender}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSender_a4393b0de845e7030d2dcd53648b3c6b9}\label{classSender_a4393b0de845e7030d2dcd53648b3c6b9}} 
+{\bfseries Sender} (unsigned int num\+Of\+Frames, \mbox{\hyperlink{classSlidingWindow}{Sliding\+Window}} $\ast$sliding\+Window)
+\item 
+\mbox{\Hypertarget{classSender_ad1b5797247e89edaec083c8d6bd3e3eb}\label{classSender_ad1b5797247e89edaec083c8d6bd3e3eb}} 
+unsigned int {\bfseries get\+Num\+Of\+Frames} () const
+\item 
+\mbox{\Hypertarget{classSender_a146879d946b3dc2738d6624aad216cab}\label{classSender_a146879d946b3dc2738d6624aad216cab}} 
+void {\bfseries set\+Num\+Of\+Frames} (unsigned int num\+Of\+Frames)
+\item 
+\mbox{\Hypertarget{classSender_a2dd1b31f1d1748465e94e2a332d1eabe}\label{classSender_a2dd1b31f1d1748465e94e2a332d1eabe}} 
+\mbox{\hyperlink{classSlidingWindow}{Sliding\+Window}} $\ast$ {\bfseries get\+Sliding\+Window} ()
+\item 
+std\+::map$<$ unsigned, std\+::set$<$ unsigned int $>$ $\ast$ $>$ \mbox{\hyperlink{classSender_af83f6b6c18b934c64344f2f12b378565}{send}} (\mbox{\hyperlink{classReceiver}{Receiver}} $\ast$r, unsigned int seq\+Num)
+\item 
+\mbox{\Hypertarget{classSender_aa643597ceb475b7ea07386f98c85c601}\label{classSender_aa643597ceb475b7ea07386f98c85c601}} 
+void {\bfseries receive\+Ack} (std\+::map$<$ unsigned int, std\+::set$<$ unsigned int $>$ $\ast$ $>$ acknowledgement)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSender_af83f6b6c18b934c64344f2f12b378565}\label{classSender_af83f6b6c18b934c64344f2f12b378565}} 
+\index{Sender@{Sender}!send@{send}}
+\index{send@{send}!Sender@{Sender}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily std\+::map$<$ unsigned, std\+::set$<$ unsigned int $>$ $\ast$ $>$ Sender\+::send (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classReceiver}{Receiver}} $\ast$}]{r,  }\item[{unsigned int}]{seq\+Num }\end{DoxyParamCaption})}
+
+Emulates sending a sequence number to the receiver -\/ returns ack from receiver containing acked sequence number and out of order sequence set 
+\begin{DoxyParams}{Parameters}
+{\em r} & \mbox{\hyperlink{classReceiver}{Receiver}} object receiving to send to \\
+\hline
+{\em seq\+Num} & Sequence number to send \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/chase/school-\/coding/3780/3780-\/project/\+Sliding\+Window/include/Sender.\+h\item 
+/home/chase/school-\/coding/3780/3780-\/project/\+Sliding\+Window/src/Sender.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,34 @@
+\hypertarget{Receiver_8h_source}{}\doxysection{Receiver.\+h}
+\label{Receiver_8h_source}\index{/home/chase/school-\/coding/3780/3780-\/project/SlidingWindow/include/Receiver.h@{/home/chase/school-\/coding/3780/3780-\/project/SlidingWindow/include/Receiver.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by mbroughton on 11/11/22.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef SLIDINGWINDOW\_RECEIVER\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define SLIDINGWINDOW\_RECEIVER\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}SlidingWindow.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <set>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{classReceiver}{Receiver}} \{}
+\DoxyCodeLine{13 \textcolor{keyword}{private}:}
+\DoxyCodeLine{14     std::set<unsigned int> *frameBuffer = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{15     \textcolor{keywordtype}{void} initializeFrameBuffer();}
+\DoxyCodeLine{16     \mbox{\hyperlink{classSlidingWindow}{SlidingWindow}} *slidingWindow;}
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18     \mbox{\hyperlink{classReceiver}{Receiver}}();}
+\DoxyCodeLine{19     \mbox{\hyperlink{classReceiver}{Receiver}}(\mbox{\hyperlink{classSlidingWindow}{SlidingWindow}}* slidingWindow);}
+\DoxyCodeLine{20     \mbox{\hyperlink{classReceiver}{\string~Receiver}}();}
+\DoxyCodeLine{21     std::set<unsigned int> *getFrameBuffer() \textcolor{keyword}{const};}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} printFrameBuffer(std::set<unsigned int> *s);}
+\DoxyCodeLine{23     \mbox{\hyperlink{classSlidingWindow}{SlidingWindow}}  *getSlidingWindow();}
+\DoxyCodeLine{24     std::map<unsigned int, std::set<unsigned int>*> \mbox{\hyperlink{classReceiver_a0321deef90c3f5c8e24d1e670e13aa48}{receive}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} seqNum);}
+\DoxyCodeLine{25     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getFirstFrameBufferElement() \textcolor{keyword}{const};}
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//SLIDINGWINDOW\_RECEIVER\_H}}
+
+\end{DoxyCode}

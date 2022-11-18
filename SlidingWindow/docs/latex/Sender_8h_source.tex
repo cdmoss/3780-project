@@ -1,0 +1,33 @@
+\hypertarget{Sender_8h_source}{}\doxysection{Sender.\+h}
+\label{Sender_8h_source}\index{/home/chase/school-\/coding/3780/3780-\/project/SlidingWindow/include/Sender.h@{/home/chase/school-\/coding/3780/3780-\/project/SlidingWindow/include/Sender.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by mbroughton on 11/11/22.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef SLIDINGWINDOW\_SENDER\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define SLIDINGWINDOW\_SENDER\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}SlidingWindow.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}Receiver.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <set>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{classSender}{Sender}} \{}
+\DoxyCodeLine{13 \textcolor{keyword}{private}:}
+\DoxyCodeLine{14     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} numOfFrames\{255\};}
+\DoxyCodeLine{15     \mbox{\hyperlink{classSlidingWindow}{SlidingWindow}} *slidingWindow;}
+\DoxyCodeLine{16     \textcolor{keywordtype}{int} lastSeqNumAck = -\/1;}
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18     \mbox{\hyperlink{classSender}{Sender}}();}
+\DoxyCodeLine{19     \mbox{\hyperlink{classSender}{Sender}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} numOfFrames, \mbox{\hyperlink{classSlidingWindow}{SlidingWindow}}* slidingWindow);}
+\DoxyCodeLine{20     \mbox{\hyperlink{classSender}{\string~Sender}}();}
+\DoxyCodeLine{21     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getNumOfFrames() \textcolor{keyword}{const};}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} setNumOfFrames(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} numOfFrames);}
+\DoxyCodeLine{23     \mbox{\hyperlink{classSlidingWindow}{SlidingWindow}}  *getSlidingWindow();}
+\DoxyCodeLine{24     std::map<unsigned, std::set<unsigned int>*> \mbox{\hyperlink{classSender_af83f6b6c18b934c64344f2f12b378565}{send}}(\mbox{\hyperlink{classReceiver}{Receiver}} *r, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} seqNum);}
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} receiveAck(std::map<\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}, std::set<unsigned int>*> acknowledgement);}
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//SLIDINGWINDOW\_SENDER\_H}}
+
+\end{DoxyCode}

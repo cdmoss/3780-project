@@ -1,0 +1,42 @@
+\hypertarget{classReceiver}{}\doxysection{Receiver Class Reference}
+\label{classReceiver}\index{Receiver@{Receiver}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classReceiver_acce197c0d448b956782edaf2ff72294f}\label{classReceiver_acce197c0d448b956782edaf2ff72294f}} 
+{\bfseries Receiver} (\mbox{\hyperlink{classSlidingWindow}{Sliding\+Window}} $\ast$sliding\+Window)
+\item 
+\mbox{\Hypertarget{classReceiver_aeb02666016e029e12d2bb83669c50d9b}\label{classReceiver_aeb02666016e029e12d2bb83669c50d9b}} 
+std\+::set$<$ unsigned int $>$ $\ast$ {\bfseries get\+Frame\+Buffer} () const
+\item 
+\mbox{\Hypertarget{classReceiver_a383f1e9e8a4f8c58facae89c4214c880}\label{classReceiver_a383f1e9e8a4f8c58facae89c4214c880}} 
+void {\bfseries print\+Frame\+Buffer} (std\+::set$<$ unsigned int $>$ $\ast$s)
+\item 
+\mbox{\Hypertarget{classReceiver_a064f57625cf0a54f633a02c31c59dbf7}\label{classReceiver_a064f57625cf0a54f633a02c31c59dbf7}} 
+\mbox{\hyperlink{classSlidingWindow}{Sliding\+Window}} $\ast$ {\bfseries get\+Sliding\+Window} ()
+\item 
+std\+::map$<$ unsigned int, std\+::set$<$ unsigned int $>$ $\ast$ $>$ \mbox{\hyperlink{classReceiver_a0321deef90c3f5c8e24d1e670e13aa48}{receive}} (unsigned int seq\+Num)
+\item 
+\mbox{\Hypertarget{classReceiver_a2a22af2bb3ba4255ce50b1ff2aab8e73}\label{classReceiver_a2a22af2bb3ba4255ce50b1ff2aab8e73}} 
+unsigned int {\bfseries get\+First\+Frame\+Buffer\+Element} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classReceiver_a0321deef90c3f5c8e24d1e670e13aa48}\label{classReceiver_a0321deef90c3f5c8e24d1e670e13aa48}} 
+\index{Receiver@{Receiver}!receive@{receive}}
+\index{receive@{receive}!Receiver@{Receiver}}
+\doxysubsubsection{\texorpdfstring{receive()}{receive()}}
+{\footnotesize\ttfamily std\+::map$<$ unsigned, std\+::set$<$ unsigned int $>$ $\ast$ $>$ Receiver\+::receive (\begin{DoxyParamCaption}\item[{unsigned int}]{seq\+Num }\end{DoxyParamCaption})}
+
+Receives a sequence number, returns the appropriate ack given the current state of frame\+Buffer -\/ returned ack consists of the sequence number being acked and the out of order sequence set 
+\begin{DoxyParams}{Parameters}
+{\em seq\+Num} & The sequence number received \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/chase/school-\/coding/3780/3780-\/project/\+Sliding\+Window/include/Receiver.\+h\item 
+/home/chase/school-\/coding/3780/3780-\/project/\+Sliding\+Window/src/Receiver.\+cpp\end{DoxyCompactItemize}

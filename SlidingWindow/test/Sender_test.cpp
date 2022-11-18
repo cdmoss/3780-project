@@ -19,6 +19,8 @@ protected:
 TEST_F(SenderTest, send) {
     Receiver *r = new Receiver();
     std::set<unsigned int> *set;
+
+    // send returns ack
     auto ack = s -> send(r, 0);
     auto ackMap = ack.begin();
     set = new std::set<unsigned int> {};
