@@ -20,14 +20,14 @@ std::set<unsigned int>* Receiver::getFrameBuffer() const {
 }
 
 Receiver::~Receiver() {
-    delete frameBuffer;
-    delete slidingWindow;
-    frameBuffer = nullptr;
-    slidingWindow = nullptr;
+    delete this -> frameBuffer;
+    delete this -> slidingWindow;
+    this -> frameBuffer = nullptr;
+    this -> slidingWindow = nullptr;
 }
 
 void Receiver::initializeFrameBuffer() {
-    frameBuffer = new std::set<unsigned int>;
+    this -> frameBuffer = new std::set<unsigned int>;
 }
 
 void Receiver::printFrameBuffer(std::set<unsigned int> *s) {
@@ -39,21 +39,21 @@ void Receiver::printFrameBuffer(std::set<unsigned int> *s) {
 }
 
 SlidingWindow*  Receiver::getSlidingWindow() {
-    return slidingWindow;
+    return this -> slidingWindow;
 }
 
 std::map<unsigned, std::set<unsigned int>*> Receiver::receive(unsigned int seqNum) {
     if (seqNum != slidingWindow -> getLastSeqNum()) {
-        frameBuffer -> insert(seqNum);
+        this -> frameBuffer -> insert(seqNum);
     } else {
-        slidingWindow -> move(seqNum);
-        auto frameBufferFirstElement = frameBuffer -> begin();
-        while (*frameBufferFirstElement == slidingWindow -> getLastSeqNum() && !frameBuffer -> empty()) {
-            slidingWindow -> move(*frameBufferFirstElement);
-            frameBuffer -> erase(frameBufferFirstElement);
+        this -> slidingWindow -> move(seqNum);
+        auto frameBufferFirstElement = this -> frameBuffer -> begin();
+        while (*frameBufferFirstElement == this -> slidingWindow -> getLastSeqNum() && !this -> frameBuffer -> empty()) {
+            this -> slidingWindow -> move(*frameBufferFirstElement);
+            this -> frameBuffer -> erase(frameBufferFirstElement);
         }
     }
     std::map<unsigned int, std::set<unsigned int>*> acknowledgement;
-    acknowledgement.insert({slidingWindow -> getLastSeqNum(), frameBuffer});
+    acknowledgement.insert({this -> slidingWindow -> getLastSeqNum(), this -> frameBuffer});
     return acknowledgement;
 }

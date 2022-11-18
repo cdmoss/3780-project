@@ -38,6 +38,8 @@ public:
     void printSlidingWindow(std::deque<unsigned int> *d);
 
     unsigned int getLastSeqNum();
+
+    unsigned int getFirstSeqNum();
 };
 
 #endif //SLIDINGWINDOW_SLIDINGWINDOW_H

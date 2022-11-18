@@ -15,26 +15,28 @@ Sender::Sender(unsigned int numOfFrames, SlidingWindow* slidingWindow) {
 }
 
 Sender::~Sender() {
-    delete slidingWindow;
-    slidingWindow = nullptr;
+    delete this -> slidingWindow;
+    this -> slidingWindow = nullptr;
 }
 
 unsigned int Sender::getNumOfFrames() const {
-    return numOfFrames;
+    return this -> numOfFrames;
 }
 
 void Sender::setNumOfFrames(unsigned int numOfFrames) {
-    Sender::numOfFrames = numOfFrames;
+    this -> numOfFrames = numOfFrames;
 }
 
 SlidingWindow*  Sender::getSlidingWindow() {
-    return slidingWindow;
+    return this -> slidingWindow;
 }
 
 void Sender::send(Receiver *r) {
     numOfFrames--;
     if (numOfFrames == 0) {
         std::cout << "All frames sent successfully!" << std::endl;
+    } else {
+        r ->receive(this -> slidingWindow -> getFirstSeqNum());
     }
 }
 
@@ -42,5 +44,5 @@ void Sender::receiveAck(std::map<unsigned int, std::set<unsigned int>*> acknowle
     auto ack = acknowledgement.begin();
     unsigned int lastSeqNumAck = ack -> first;
     std::set<unsigned int> *frameBuffer = ack -> second;
-    if ()
+    this -> slidingWindow ->move(lastSeqNumAck);
 }
