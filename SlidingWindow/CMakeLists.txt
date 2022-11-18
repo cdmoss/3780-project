@@ -14,12 +14,18 @@ add_executable(
         test/Receiver_test.cpp
         include/Receiver.h
         src/Receiver.cpp
+        src/SlidingWindow.cpp
+        include/SlidingWindow.h
 )
 
 add_executable(
         Sender_test
         test/Sender_test.cpp
         include/Sender.h
+        src/Sender.cpp
+        src/SlidingWindow.cpp
+        include/SlidingWindow.h
+        include/Receiver.h
         src/Receiver.cpp
 )
 

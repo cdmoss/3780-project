@@ -32,8 +32,8 @@ void Receiver::initializeFrameBuffer() {
 
 void Receiver::printFrameBuffer(std::set<unsigned int> *s) {
     std::cout << "\n";
-    for (auto it = s -> begin(); it != s -> end(); ++it) {
-        std::cout << ' ' << *it;
+    for (unsigned int it : *s) {
+        std::cout << ' ' << it;
     }
     std::cout << std::endl;
 }

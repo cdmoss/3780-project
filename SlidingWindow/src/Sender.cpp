@@ -3,6 +3,7 @@
 //
 
 #include "../include/Sender.h"
+#include <iostream>
 
 Sender::Sender() {
     slidingWindow = new SlidingWindow();
@@ -30,13 +31,16 @@ SlidingWindow*  Sender::getSlidingWindow() {
     return slidingWindow;
 }
 
-void Sender::send(unsigned int seqNum) {
+void Sender::send(Receiver *r) {
+    numOfFrames--;
+    if (numOfFrames == 0) {
+        std::cout << "All frames sent successfully!" << std::endl;
+    }
+}
 
-    /*
-        numOfFrames--;
-        if (numOfFrames == 0) {
-            std::cout << "All frames sent successfully!" << std::endl;
-            break;
-        }
-         */
+void Sender::receiveAck(std::map<unsigned int, std::set<unsigned int>*> acknowledgement) {
+    auto ack = acknowledgement.begin();
+    unsigned int lastSeqNumAck = ack -> first;
+    std::set<unsigned int> *frameBuffer = ack -> second;
+    if ()
 }

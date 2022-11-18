@@ -6,6 +6,7 @@
 #define SLIDINGWINDOW_SENDER_H
 
 #include "SlidingWindow.h"
+#include "Receiver.h"
 #include <set>
 
 class Sender {
@@ -19,6 +20,7 @@ public:
     unsigned int getNumOfFrames() const;
     void setNumOfFrames(unsigned int numOfFrames);
     SlidingWindow  *getSlidingWindow();
-    void send(unsigned int seqNum);
+    void send(Receiver *r);
+    void receiveAck(std::map<unsigned int, std::set<unsigned int>*> acknowledgement);
 };
 #endif //SLIDINGWINDOW_SENDER_H
