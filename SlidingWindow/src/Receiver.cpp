@@ -43,17 +43,20 @@ SlidingWindow*  Receiver::getSlidingWindow() {
 }
 
 std::map<unsigned, std::set<unsigned int>*> Receiver::receive(unsigned int seqNum) {
-    if (seqNum != slidingWindow -> getLastSeqNum()) {
+    if (seqNum != slidingWindow -> getFirstSeqNum()) {
         this -> frameBuffer -> insert(seqNum);
     } else {
         this -> slidingWindow -> move(seqNum);
-        auto frameBufferFirstElement = this -> frameBuffer -> begin();
-        while (*frameBufferFirstElement == this -> slidingWindow -> getLastSeqNum() && !this -> frameBuffer -> empty()) {
-            this -> slidingWindow -> move(*frameBufferFirstElement);
-            this -> frameBuffer -> erase(frameBufferFirstElement);
+        while (this -> getFirstFrameBufferElement() == this -> slidingWindow -> getFirstSeqNum() && !this -> frameBuffer -> empty()) {
+            this -> slidingWindow -> move(this -> getFirstFrameBufferElement());
+            this -> frameBuffer -> erase(this -> getFirstFrameBufferElement());
         }
     }
     std::map<unsigned int, std::set<unsigned int>*> acknowledgement;
-    acknowledgement.insert({this -> slidingWindow -> getLastSeqNum(), this -> frameBuffer});
+    acknowledgement.insert({this -> slidingWindow -> getFirstSeqNum() - 1, this -> frameBuffer});
     return acknowledgement;
+}
+
+unsigned int Receiver::getFirstFrameBufferElement() const {
+    return *(this -> frameBuffer -> begin());
 }

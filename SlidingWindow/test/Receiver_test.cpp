@@ -1,7 +1,3 @@
-//
-// Created by mbroughton on 16/11/22.
-//
-
 #include <gtest/gtest.h>
 #include "../include/Receiver.h"
 
@@ -19,5 +15,6 @@ protected:
     }
 };
 
-TEST_F(ReceiverTest, receiver) {
+TEST_F(ReceiverTest, receive) {
+
 }

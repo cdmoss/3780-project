@@ -31,7 +31,7 @@ public:
 
     void setSeqNumBits(unsigned int seqNumBits);
 
-    void move(unsigned int seqNum);
+    unsigned int move(unsigned int seqNum);
 
     std::deque<unsigned int> *getSlidingWindow();
 

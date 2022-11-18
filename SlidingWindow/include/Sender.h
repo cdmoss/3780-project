@@ -13,6 +13,7 @@ class Sender {
 private:
     unsigned int numOfFrames{255};
     SlidingWindow *slidingWindow;
+    int lastSeqNumAck = -1;
 public:
     Sender();
     Sender(unsigned int numOfFrames, SlidingWindow* slidingWindow);
@@ -20,7 +21,7 @@ public:
     unsigned int getNumOfFrames() const;
     void setNumOfFrames(unsigned int numOfFrames);
     SlidingWindow  *getSlidingWindow();
-    void send(Receiver *r);
+    std::map<unsigned, std::set<unsigned int>*> send(Receiver *r, unsigned int seqNum);
     void receiveAck(std::map<unsigned int, std::set<unsigned int>*> acknowledgement);
 };
 #endif //SLIDINGWINDOW_SENDER_H

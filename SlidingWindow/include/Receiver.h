@@ -22,6 +22,7 @@ public:
     void printFrameBuffer(std::set<unsigned int> *s);
     SlidingWindow  *getSlidingWindow();
     std::map<unsigned int, std::set<unsigned int>*> receive(unsigned int seqNum);
+    unsigned int getFirstFrameBufferElement() const;
 };
 
 #endif //SLIDINGWINDOW_RECEIVER_H

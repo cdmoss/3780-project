@@ -35,7 +35,7 @@ void SlidingWindow::setWindowSize(unsigned int windowSize) {
     initializeSlidingWindow(windowSize);
 }
 
-void SlidingWindow::move(unsigned int seqNum) {
+unsigned int SlidingWindow::move(unsigned int seqNum) {
     assert(this -> slidingWindow != nullptr);
     /**
      * Check to ensure seqNum is in the slidingWindow
@@ -49,7 +49,9 @@ void SlidingWindow::move(unsigned int seqNum) {
         nextSeqNum = seqNum + 1;
     }
 
+    unsigned int movedCounter = 0;
     while (this -> slidingWindow -> front() != nextSeqNum) {
+        movedCounter++;
         this -> slidingWindow -> pop_front();
         if (this -> getLastSeqNum() == this -> maxSeqNum) {
             this -> slidingWindow -> push_back(0);
@@ -57,6 +59,8 @@ void SlidingWindow::move(unsigned int seqNum) {
             this -> slidingWindow -> push_back(this -> getLastSeqNum() + 1);
         }
     }
+
+    return movedCounter;
 }
 
 unsigned int SlidingWindow::getSeqNumBits() const {

@@ -27,22 +27,24 @@ void Sender::setNumOfFrames(unsigned int numOfFrames) {
     this -> numOfFrames = numOfFrames;
 }
 
-SlidingWindow*  Sender::getSlidingWindow() {
+SlidingWindow* Sender::getSlidingWindow() {
     return this -> slidingWindow;
 }
 
-void Sender::send(Receiver *r) {
-    numOfFrames--;
-    if (numOfFrames == 0) {
-        std::cout << "All frames sent successfully!" << std::endl;
-    } else {
-        r ->receive(this -> slidingWindow -> getFirstSeqNum());
-    }
+std::map<unsigned, std::set<unsigned int>*> Sender::send(Receiver *r, unsigned int seqNum) {
+    std::map<unsigned, std::set<unsigned int>*> acknowledgement = r ->receive(seqNum);
+    return acknowledgement;
 }
 
 void Sender::receiveAck(std::map<unsigned int, std::set<unsigned int>*> acknowledgement) {
     auto ack = acknowledgement.begin();
-    unsigned int lastSeqNumAck = ack -> first;
-    std::set<unsigned int> *frameBuffer = ack -> second;
-    this -> slidingWindow ->move(lastSeqNumAck);
+    if (lastSeqNumAck != ack -> first) {
+        lastSeqNumAck = ack -> first;
+        unsigned int framesReceived = this -> slidingWindow ->move(lastSeqNumAck);
+        numOfFrames -= framesReceived;
+    }
+
+    if (numOfFrames == 0) {
+        std::cout << "All frames successfully sent!" << std::endl;
+    }
 }

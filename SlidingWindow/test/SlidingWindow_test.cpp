@@ -28,4 +28,11 @@ TEST_F(SlidingWindowTest, move) {
     d = {6, 7, 0, 1};
     sw -> move(5);
     ASSERT_EQ(*(sw -> getSlidingWindow()), d);
+
+    SlidingWindow *s = new SlidingWindow(10, 4);
+    d = {10, 11, 12, 13, 14, 15, 0, 1, 2, 3};
+    s -> move(9);
+    ASSERT_EQ(*(s -> getSlidingWindow()), d);
+    delete s;
+    s = nullptr;
 }
