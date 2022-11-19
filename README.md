@@ -7,6 +7,7 @@ University of Lethbridge - Fall 2022
 Implementation of Selective Repeat communication protocol
 
 #### To run the tests:
-1. ensure cmake is installed
-2. cd into Proj4
-3. run `runtest.sh`
+*atleast CMake 3.16.3 and C++ 14 required*
+
+1. `cd` into `SlidingWindow` directory 
+2. run `./runtest.sh`
