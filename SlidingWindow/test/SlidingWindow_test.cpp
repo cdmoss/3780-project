@@ -1,7 +1,3 @@
-//
-// Created by mbroughton on 11/11/22.
-//
-
 #include <gtest/gtest.h>
 #include "../include/SlidingWindow.h"
 #include <deque>
@@ -9,7 +5,7 @@
 
 class SlidingWindowTest : public testing::Test {
 protected:
-    SlidingWindow * sw;
+    SlidingWindow *sw;
 
     void SetUp() override {
         sw = new SlidingWindow();  // create a new class before each test to start fresh

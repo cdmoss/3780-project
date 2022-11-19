@@ -1,7 +1,3 @@
-//
-// Created by mbroughton on 11/11/22.
-//
-
 #ifndef SLIDINGWINDOW_SENDER_H
 #define SLIDINGWINDOW_SENDER_H
 
@@ -20,7 +16,9 @@ public:
     Sender();
     Sender(unsigned int numOfFrames, SlidingWindow *slidingWindow);
     ~Sender();
+
     unsigned int getNumOfFrames() const;
+
     void setNumOfFrames(unsigned int numOfFrames);
     SlidingWindow *getSlidingWindow();
     unsigned send();

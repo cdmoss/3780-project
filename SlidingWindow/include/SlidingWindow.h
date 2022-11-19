@@ -1,7 +1,3 @@
-//
-// Created by mbroughton on 11/11/22.
-//
-
 #ifndef SLIDINGWINDOW_SLIDINGWINDOW_H
 #define SLIDINGWINDOW_SLIDINGWINDOW_H
 
@@ -57,4 +53,4 @@ public:
     bool containsSentSeqs();
 };
 
-#endif //SLIDINGWINDOW_SLIDINGWINDOW_H
+#endif

@@ -1,6 +1,5 @@
 #include <gtest/gtest.h>
 #include "../include/Sender.h"
-#include "../include/Receiver.h"
 
 class SenderTest : public testing::Test {
 protected:
