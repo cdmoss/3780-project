@@ -17,10 +17,11 @@ protected:
 
 TEST_F(ReceiverTest, receive_ack_value) {
     std::pair<unsigned int, std::set<unsigned int> *> p;
-    std::set<unsigned int> *s = new std::set<unsigned int>;
+    std::set<unsigned int> *s = new std::set<unsigned int> {};
 
     p = r->receive(0);
     ASSERT_EQ(p.first, 0);
+    ASSERT_EQ(*(p.second), *(s));
 
     p = r->receive(2);
     ASSERT_EQ(p.first, 0);
@@ -36,7 +37,7 @@ TEST_F(ReceiverTest, receive_ack_value) {
     s = nullptr;
 }
 
-TEST_F(ReceiverTest, receive_wrap_around) {
+TEST_F(ReceiverTest, receiveWrapAround) {
     std::pair<unsigned int, std::set<unsigned int> *> p;
 
     for (int i = 0; i < 8; i++) {
@@ -45,4 +46,18 @@ TEST_F(ReceiverTest, receive_wrap_around) {
 
     p = r->receive(0);
     ASSERT_EQ(p.first, 0);
+}
+
+TEST_F(ReceiverTest, getFirstFrameBufferElement) {
+    std::pair<unsigned int, std::set<unsigned int> *> p;
+    std::set<unsigned int> *s = new std::set<unsigned int> {1, 2, 3, 4, 5, 6, 7};
+    for (int i = 1; i < 8; i++) {
+        p = r->receive(i);
+    }
+
+    ASSERT_EQ(*(p.second), *(s));
+
+    *s = {};
+    p = r->receive(0);
+    ASSERT_EQ(*(p.second), *(s));
 }
