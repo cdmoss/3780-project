@@ -1,7 +1,13 @@
 \hypertarget{classSlidingWindow}{}\doxysection{Sliding\+Window Class Reference}
 \label{classSlidingWindow}\index{SlidingWindow@{SlidingWindow}}
+
+
+{\ttfamily \#include $<$Sliding\+Window.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSlidingWindow_a7a597447172fd938be19011dc6842057}{initialize\+Sliding\+Window}} (unsigned int window\+Size)
 \item 
 \mbox{\hyperlink{classSlidingWindow_a36a51e9b2a4d35e9cd78ce643cca83b9}{Sliding\+Window}} (unsigned int window\+Size, unsigned int seq\+Num\+Bits)
 \item 
@@ -16,24 +22,41 @@ void {\bfseries set\+Window\+Size} (unsigned int window\+Size)
 \mbox{\Hypertarget{classSlidingWindow_a3c4ee78682f1ef32564f66f70d1ae662}\label{classSlidingWindow_a3c4ee78682f1ef32564f66f70d1ae662}} 
 unsigned int {\bfseries get\+Seq\+Num\+Bits} () const
 \item 
+\mbox{\Hypertarget{classSlidingWindow_a87d965689e872bce1f80bb87fb8b8beb}\label{classSlidingWindow_a87d965689e872bce1f80bb87fb8b8beb}} 
+unsigned int {\bfseries get\+Max\+Seq\+Num} () const
+\item 
 \mbox{\Hypertarget{classSlidingWindow_acc7d366087cc17409910ac5321bf68d2}\label{classSlidingWindow_acc7d366087cc17409910ac5321bf68d2}} 
 void {\bfseries set\+Seq\+Num\+Bits} (unsigned int seq\+Num\+Bits)
 \item 
+\mbox{\Hypertarget{classSlidingWindow_ad88186c6938fe0f4cdd2f0dd6cf0b7f4}\label{classSlidingWindow_ad88186c6938fe0f4cdd2f0dd6cf0b7f4}} 
+unsigned int {\bfseries window\+Contains\+Seq} (unsigned int seq\+Num)
+\item 
 unsigned int \mbox{\hyperlink{classSlidingWindow_aff04b46b13eb9c29a8ffd58056c45d81}{move}} (unsigned int seq\+Num)
 \item 
-\mbox{\Hypertarget{classSlidingWindow_adff5188e9b123aa0bedafab7ba4fa2e8}\label{classSlidingWindow_adff5188e9b123aa0bedafab7ba4fa2e8}} 
-std\+::deque$<$ unsigned int $>$ $\ast$ {\bfseries get\+Sliding\+Window} ()
+unsigned \mbox{\hyperlink{classSlidingWindow_ad7a0010a4a6f77396e0b408143a06c4c}{send\+Next}} ()
 \item 
-\mbox{\Hypertarget{classSlidingWindow_a4bcfd534e78c7928a2a4c728d4b2e955}\label{classSlidingWindow_a4bcfd534e78c7928a2a4c728d4b2e955}} 
-void {\bfseries print\+Sliding\+Window} (std\+::deque$<$ unsigned int $>$ $\ast$d)
+\mbox{\Hypertarget{classSlidingWindow_a8961c459113b8904be6ee7eb0fb662e3}\label{classSlidingWindow_a8961c459113b8904be6ee7eb0fb662e3}} 
+std\+::deque$<$ \mbox{\hyperlink{structWindowElement}{Window\+Element}} $\ast$ $>$ {\bfseries get\+Sliding\+Window} ()
 \item 
-\mbox{\Hypertarget{classSlidingWindow_a702062ffc89e270c7f5279f348522713}\label{classSlidingWindow_a702062ffc89e270c7f5279f348522713}} 
-unsigned int {\bfseries get\+Last\+Seq\+Num} ()
+\mbox{\Hypertarget{classSlidingWindow_a936f6fb353439ed977fbb60d468e0dad}\label{classSlidingWindow_a936f6fb353439ed977fbb60d468e0dad}} 
+void {\bfseries print\+Sliding\+Window} ()
 \item 
-\mbox{\Hypertarget{classSlidingWindow_a12ff18b27b5d7d531fccfaff833a8ff5}\label{classSlidingWindow_a12ff18b27b5d7d531fccfaff833a8ff5}} 
-unsigned int {\bfseries get\+First\+Seq\+Num} ()
+\mbox{\Hypertarget{classSlidingWindow_a28bbb904b47e33e8c45e18cc0dfd68d7}\label{classSlidingWindow_a28bbb904b47e33e8c45e18cc0dfd68d7}} 
+\mbox{\hyperlink{structWindowElement}{Window\+Element}} $\ast$ {\bfseries get\+Last} () const
+\item 
+\mbox{\Hypertarget{classSlidingWindow_a4592a62ebd9d7b084a5103f393037d18}\label{classSlidingWindow_a4592a62ebd9d7b084a5103f393037d18}} 
+\mbox{\hyperlink{structWindowElement}{Window\+Element}} $\ast$ {\bfseries get\+First} () const
+\item 
+\mbox{\Hypertarget{classSlidingWindow_af6138b3097b98830fc26c47301694c19}\label{classSlidingWindow_af6138b3097b98830fc26c47301694c19}} 
+bool {\bfseries window\+Matches\+Set} (std\+::vector$<$ unsigned $>$ v)
+\item 
+\mbox{\Hypertarget{classSlidingWindow_a175030cd4e95930f95d40f743bd07bd3}\label{classSlidingWindow_a175030cd4e95930f95d40f743bd07bd3}} 
+bool {\bfseries contains\+Sent\+Seqs} ()
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+This class provides a Sliding Window structure used by both the \mbox{\hyperlink{classSender}{Sender}} and \mbox{\hyperlink{classReceiver}{Receiver}} 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classSlidingWindow_a36a51e9b2a4d35e9cd78ce643cca83b9}\label{classSlidingWindow_a36a51e9b2a4d35e9cd78ce643cca83b9}} 
@@ -58,18 +81,30 @@ Constructor validates that max sequence num given num bits will not exceed windo
 Default constructor that uses default values for window size (4) and seq\+Num\+Bits (7) 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classSlidingWindow_aff04b46b13eb9c29a8ffd58056c45d81}\label{classSlidingWindow_aff04b46b13eb9c29a8ffd58056c45d81}} 
+\mbox{\Hypertarget{classSlidingWindow_a7a597447172fd938be19011dc6842057}\label{classSlidingWindow_a7a597447172fd938be19011dc6842057}} 
+\index{SlidingWindow@{SlidingWindow}!initializeSlidingWindow@{initializeSlidingWindow}}
+\index{initializeSlidingWindow@{initializeSlidingWindow}!SlidingWindow@{SlidingWindow}}
+\doxysubsubsection{\texorpdfstring{initializeSlidingWindow()}{initializeSlidingWindow()}}
+{\footnotesize\ttfamily void Sliding\+Window\+::initialize\+Sliding\+Window (\begin{DoxyParamCaption}\item[{unsigned int}]{window\+Size }\end{DoxyParamCaption})}
+
+Allocates new deque, fills it with ints from 0 -\/ win\+Size -\/ 1 \mbox{\Hypertarget{classSlidingWindow_aff04b46b13eb9c29a8ffd58056c45d81}\label{classSlidingWindow_aff04b46b13eb9c29a8ffd58056c45d81}} 
 \index{SlidingWindow@{SlidingWindow}!move@{move}}
 \index{move@{move}!SlidingWindow@{SlidingWindow}}
 \doxysubsubsection{\texorpdfstring{move()}{move()}}
 {\footnotesize\ttfamily unsigned int Sliding\+Window\+::move (\begin{DoxyParamCaption}\item[{unsigned int}]{seq\+Num }\end{DoxyParamCaption})}
 
-Slides the window forward to the given sequence number 
+Slides the window forward to the given sequence number that is 1 past the given sequence number 
 \begin{DoxyParams}{Parameters}
 {\em seq\+Num} & the seq number to slide the window to \\
 \hline
 \end{DoxyParams}
-Check to ensure seq\+Num is in the sliding\+Window
+\mbox{\Hypertarget{classSlidingWindow_ad7a0010a4a6f77396e0b408143a06c4c}\label{classSlidingWindow_ad7a0010a4a6f77396e0b408143a06c4c}} 
+\index{SlidingWindow@{SlidingWindow}!sendNext@{sendNext}}
+\index{sendNext@{sendNext}!SlidingWindow@{SlidingWindow}}
+\doxysubsubsection{\texorpdfstring{sendNext()}{sendNext()}}
+{\footnotesize\ttfamily unsigned Sliding\+Window\+::send\+Next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Marks the next unsent seq in the queue as sent 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -39,6 +39,9 @@ SlidingWindow *Receiver::getSlidingWindow() {
 * @param seqNum Tfull idk byhe sequence number received
 */
 std::pair<unsigned int, std::vector<unsigned int>> Receiver::receive(unsigned int seqNum) {
+    std::cout << "seqNum: " << seqNum << std::endl;;
+    std::cout << "first in window: " << slidingWindow->getFirst()->seqNum << std::endl;
+    ;
     if (seqNum != slidingWindow->getFirst()->seqNum) {
         // seqNum received is out of order: add it to frame buffer
         frameBuffer.push_back(seqNum);
@@ -74,6 +77,11 @@ std::pair<unsigned int, std::vector<unsigned int>> Receiver::receive(unsigned in
 }
 
 unsigned int Receiver::getFirstFrameBufferElement() const {
-    assert(!frameBuffer.empty());
-    return frameBuffer[0];
+    if (!frameBuffer.empty()) {
+        return frameBuffer[0];
+    }
+    else {
+        std::cout << "Nothing in frameBuffer" << std::endl;
+        return -1;
+    }
 }

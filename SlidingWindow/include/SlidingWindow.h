@@ -12,8 +12,9 @@ struct WindowElement {
     };
 };
 
-
-
+/**
+ * This class provides a Sliding Window structure used by both the Sender and Receiver
+ */
 class SlidingWindow {
 private:
     unsigned int windowSize{4};

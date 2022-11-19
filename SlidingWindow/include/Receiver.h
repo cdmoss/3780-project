@@ -5,11 +5,15 @@
 #include <vector>
 #include <utility>
 
+/**
+* This class provides a Receiver for a selective repeat protocol communciation channel.
+*/
 class Receiver {
 
 private:
-    unsigned int winSize;
-
+    /**
+    * A comparator that takes into account window wraparounds in its ordering of sequence numbers
+    */
     class WraparoundComparator {
     private:
       unsigned winSize = 0;

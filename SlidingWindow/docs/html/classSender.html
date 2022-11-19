@@ -75,6 +75,8 @@ $(function() {
   <div class="headertitle"><div class="title">Sender Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="Sender_8h_source.html">Sender.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -90,45 +92,87 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setNumOfFrames</b> (u
 <tr class="memitem:a2dd1b31f1d1748465e94e2a332d1eabe"><td class="memItemLeft" align="right" valign="top"><a id="a2dd1b31f1d1748465e94e2a332d1eabe" name="a2dd1b31f1d1748465e94e2a332d1eabe"></a>
 <a class="el" href="classSlidingWindow.html">SlidingWindow</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getSlidingWindow</b> ()</td></tr>
 <tr class="separator:a2dd1b31f1d1748465e94e2a332d1eabe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af83f6b6c18b934c64344f2f12b378565"><td class="memItemLeft" align="right" valign="top">std::map&lt; unsigned, std::set&lt; unsigned int &gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSender.html#af83f6b6c18b934c64344f2f12b378565">send</a> (<a class="el" href="classReceiver.html">Receiver</a> *r, unsigned int seqNum)</td></tr>
-<tr class="separator:af83f6b6c18b934c64344f2f12b378565"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa643597ceb475b7ea07386f98c85c601"><td class="memItemLeft" align="right" valign="top"><a id="aa643597ceb475b7ea07386f98c85c601" name="aa643597ceb475b7ea07386f98c85c601"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>receiveAck</b> (std::map&lt; unsigned int, std::set&lt; unsigned int &gt; * &gt; acknowledgement)</td></tr>
-<tr class="separator:aa643597ceb475b7ea07386f98c85c601"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ddd44e5ab2e94b48c76de4e17325dfc"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSender.html#a0ddd44e5ab2e94b48c76de4e17325dfc">send</a> ()</td></tr>
+<tr class="separator:a0ddd44e5ab2e94b48c76de4e17325dfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bb94f8536f7aec2b9954f40228dc45d"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSender.html#a8bb94f8536f7aec2b9954f40228dc45d">sendMulti</a> (unsigned amt)</td></tr>
+<tr class="separator:a8bb94f8536f7aec2b9954f40228dc45d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ae2f86ff05e20ec470dafd27111f465"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSender.html#a6ae2f86ff05e20ec470dafd27111f465">receiveAck</a> (unsigned ackedSeq)</td></tr>
+<tr class="separator:a6ae2f86ff05e20ec470dafd27111f465"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4ff7831e926972b6d4a2e5f0af85edb"><td class="memItemLeft" align="right" valign="top"><a id="aa4ff7831e926972b6d4a2e5f0af85edb" name="aa4ff7831e926972b6d4a2e5f0af85edb"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>windowMatchesSet</b> (std::vector&lt; unsigned &gt;)</td></tr>
+<tr class="separator:aa4ff7831e926972b6d4a2e5f0af85edb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14b415686e9970a2a8cb49b8c5d8ed71"><td class="memItemLeft" align="right" valign="top"><a id="a14b415686e9970a2a8cb49b8c5d8ed71" name="a14b415686e9970a2a8cb49b8c5d8ed71"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>resetSlidingWindow</b> (unsigned winSize)</td></tr>
+<tr class="separator:a14b415686e9970a2a8cb49b8c5d8ed71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="af83f6b6c18b934c64344f2f12b378565" name="af83f6b6c18b934c64344f2f12b378565"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af83f6b6c18b934c64344f2f12b378565">&#9670;&#160;</a></span>send()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class provides a sender for a selective repeat protocol communciation channel. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6ae2f86ff05e20ec470dafd27111f465" name="a6ae2f86ff05e20ec470dafd27111f465"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ae2f86ff05e20ec470dafd27111f465">&#9670;&#160;</a></span>receiveAck()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt; unsigned, std::set&lt; unsigned int &gt; * &gt; Sender::send </td>
+          <td class="memname">unsigned Sender::receiveAck </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classReceiver.html">Receiver</a> *&#160;</td>
-          <td class="paramname"><em>r</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>ackedSeq</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>seqNum</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Emulates sending a sequence number to the receiver - returns ack from receiver containing acked sequence number and out of order sequence set </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Emulates sending a sequence number to the receiver - returns spots the sliding window moved == number of frames that being declared as received by ack </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">r</td><td><a class="el" href="classReceiver.html">Receiver</a> object receiving to send to </td></tr>
     <tr><td class="paramname">seqNum</td><td>Sequence number to send </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a0ddd44e5ab2e94b48c76de4e17325dfc" name="a0ddd44e5ab2e94b48c76de4e17325dfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ddd44e5ab2e94b48c76de4e17325dfc">&#9670;&#160;</a></span>send()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned Sender::send </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Emulates sending a sequence number </p><dl class="section return"><dt>Returns</dt><dd>the sequence number to be sent, or -1 if a seq can't be sent </dd></dl>
+
+</div>
+</div>
+<a id="a8bb94f8536f7aec2b9954f40228dc45d" name="a8bb94f8536f7aec2b9954f40228dc45d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bb94f8536f7aec2b9954f40228dc45d">&#9670;&#160;</a></span>sendMulti()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned Sender::sendMulti </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>amt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Emulates multiple consecutive sends </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">amt</td><td>The amount of consecutive sends to receive </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the sequence number to be sent, or -1 if a seq can't be sent </dd></dl>
 
 </div>
 </div>

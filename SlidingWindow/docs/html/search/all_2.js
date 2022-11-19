@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['send_0',['send',['../classSender.html#af83f6b6c18b934c64344f2f12b378565',1,'Sender']]],
-  ['sender_1',['Sender',['../classSender.html',1,'']]],
-  ['slidingwindow_2',['SlidingWindow',['../classSlidingWindow.html',1,'SlidingWindow'],['../classSlidingWindow.html#a36a51e9b2a4d35e9cd78ce643cca83b9',1,'SlidingWindow::SlidingWindow(unsigned int windowSize, unsigned int seqNumBits)'],['../classSlidingWindow.html#a5fde76017cc202055cf3ae3011258106',1,'SlidingWindow::SlidingWindow()']]]
+  ['receive_0',['receive',['../classReceiver.html#a343fdd8c012befdb1180dd73c2e8711a',1,'Receiver']]],
+  ['receiveack_1',['receiveAck',['../classSender.html#a6ae2f86ff05e20ec470dafd27111f465',1,'Sender']]],
+  ['receiver_2',['Receiver',['../classReceiver.html',1,'']]]
 ];

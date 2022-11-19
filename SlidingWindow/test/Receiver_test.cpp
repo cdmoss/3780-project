@@ -17,21 +17,22 @@ protected:
 
 TEST_F(ReceiverTest, receive_ack_value) {
     std::pair<unsigned int, std::vector<unsigned int>> p;
-    std::vector<unsigned int> s;
-
     p = r->receive(0);
-    // ASSERT_EQ(p.first, 0);
-    // ASSERT_EQ(p.second, s);
+    ASSERT_EQ(p.first, 0);
 
-    // p = r->receive(2);
-    // ASSERT_EQ(p.first, 0);
-    // s = {2};
-    // ASSERT_EQ(p.second, s);
+    p = r->receive(2);
+    std::vector<unsigned int> s = {2};
 
-    // p = r->receive(1);
-    // ASSERT_EQ(p.first, 2);
-    // s = {};
-    // ASSERT_EQ(p.second, s);
+    ASSERT_EQ(p.first, 0);
+    ASSERT_EQ(p.second, s);
+
+    p = r->receive(1);
+    ASSERT_EQ(p.first, 2);
+    s = {};
+    ASSERT_EQ(p.second, s);
+
+    p = r->receive(1);
+    ASSERT_EQ(p.first, 2);
 }
 
 TEST_F(ReceiverTest, receiveWrapAround) {
@@ -54,19 +55,6 @@ TEST_F(ReceiverTest, getFirstFrameBufferElement) {
     r ->receive(0);
     ASSERT_EQ(r -> getFirstFrameBufferElement(), 3);
 
-    /*
     r ->receive(2);
-    ASSERT_DEATH(r -> getFirstFrameBufferElement(), "");
-
-     */
+    ASSERT_EQ(r -> getFirstFrameBufferElement(), -1);
 }
-/*
-TEST_F(ReceiverTest, receive_out_order) {
-    std::pair<unsigned int, std::vector<unsigned int> *> p;
-    std::vector<unsigned int> s;
-      p = r->receive(1);
-      p = r->receive(2);
-      s = p.second;
-
-      ASSERT_EQ(s.begin, 1);
-}*/

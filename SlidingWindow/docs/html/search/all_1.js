@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['receive_0',['receive',['../classReceiver.html#a0321deef90c3f5c8e24d1e670e13aa48',1,'Receiver']]],
-  ['receiver_1',['Receiver',['../classReceiver.html',1,'']]]
+  ['move_0',['move',['../classSlidingWindow.html#aff04b46b13eb9c29a8ffd58056c45d81',1,'SlidingWindow']]]
 ];

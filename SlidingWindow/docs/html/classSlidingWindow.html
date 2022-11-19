@@ -75,9 +75,13 @@ $(function() {
   <div class="headertitle"><div class="title">SlidingWindow Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="SlidingWindow_8h_source.html">SlidingWindow.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a7a597447172fd938be19011dc6842057"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlidingWindow.html#a7a597447172fd938be19011dc6842057">initializeSlidingWindow</a> (unsigned int windowSize)</td></tr>
+<tr class="separator:a7a597447172fd938be19011dc6842057"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36a51e9b2a4d35e9cd78ce643cca83b9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlidingWindow.html#a36a51e9b2a4d35e9cd78ce643cca83b9">SlidingWindow</a> (unsigned int windowSize, unsigned int seqNumBits)</td></tr>
 <tr class="separator:a36a51e9b2a4d35e9cd78ce643cca83b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5fde76017cc202055cf3ae3011258106"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlidingWindow.html#a5fde76017cc202055cf3ae3011258106">SlidingWindow</a> ()</td></tr>
@@ -91,25 +95,41 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setWindowSize</b> (un
 <tr class="memitem:a3c4ee78682f1ef32564f66f70d1ae662"><td class="memItemLeft" align="right" valign="top"><a id="a3c4ee78682f1ef32564f66f70d1ae662" name="a3c4ee78682f1ef32564f66f70d1ae662"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getSeqNumBits</b> () const</td></tr>
 <tr class="separator:a3c4ee78682f1ef32564f66f70d1ae662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87d965689e872bce1f80bb87fb8b8beb"><td class="memItemLeft" align="right" valign="top"><a id="a87d965689e872bce1f80bb87fb8b8beb" name="a87d965689e872bce1f80bb87fb8b8beb"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getMaxSeqNum</b> () const</td></tr>
+<tr class="separator:a87d965689e872bce1f80bb87fb8b8beb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc7d366087cc17409910ac5321bf68d2"><td class="memItemLeft" align="right" valign="top"><a id="acc7d366087cc17409910ac5321bf68d2" name="acc7d366087cc17409910ac5321bf68d2"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setSeqNumBits</b> (unsigned int seqNumBits)</td></tr>
 <tr class="separator:acc7d366087cc17409910ac5321bf68d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad88186c6938fe0f4cdd2f0dd6cf0b7f4"><td class="memItemLeft" align="right" valign="top"><a id="ad88186c6938fe0f4cdd2f0dd6cf0b7f4" name="ad88186c6938fe0f4cdd2f0dd6cf0b7f4"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>windowContainsSeq</b> (unsigned int seqNum)</td></tr>
+<tr class="separator:ad88186c6938fe0f4cdd2f0dd6cf0b7f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff04b46b13eb9c29a8ffd58056c45d81"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlidingWindow.html#aff04b46b13eb9c29a8ffd58056c45d81">move</a> (unsigned int seqNum)</td></tr>
 <tr class="separator:aff04b46b13eb9c29a8ffd58056c45d81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adff5188e9b123aa0bedafab7ba4fa2e8"><td class="memItemLeft" align="right" valign="top"><a id="adff5188e9b123aa0bedafab7ba4fa2e8" name="adff5188e9b123aa0bedafab7ba4fa2e8"></a>
-std::deque&lt; unsigned int &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>getSlidingWindow</b> ()</td></tr>
-<tr class="separator:adff5188e9b123aa0bedafab7ba4fa2e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bcfd534e78c7928a2a4c728d4b2e955"><td class="memItemLeft" align="right" valign="top"><a id="a4bcfd534e78c7928a2a4c728d4b2e955" name="a4bcfd534e78c7928a2a4c728d4b2e955"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printSlidingWindow</b> (std::deque&lt; unsigned int &gt; *d)</td></tr>
-<tr class="separator:a4bcfd534e78c7928a2a4c728d4b2e955"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a702062ffc89e270c7f5279f348522713"><td class="memItemLeft" align="right" valign="top"><a id="a702062ffc89e270c7f5279f348522713" name="a702062ffc89e270c7f5279f348522713"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getLastSeqNum</b> ()</td></tr>
-<tr class="separator:a702062ffc89e270c7f5279f348522713"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12ff18b27b5d7d531fccfaff833a8ff5"><td class="memItemLeft" align="right" valign="top"><a id="a12ff18b27b5d7d531fccfaff833a8ff5" name="a12ff18b27b5d7d531fccfaff833a8ff5"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getFirstSeqNum</b> ()</td></tr>
-<tr class="separator:a12ff18b27b5d7d531fccfaff833a8ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7a0010a4a6f77396e0b408143a06c4c"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlidingWindow.html#ad7a0010a4a6f77396e0b408143a06c4c">sendNext</a> ()</td></tr>
+<tr class="separator:ad7a0010a4a6f77396e0b408143a06c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8961c459113b8904be6ee7eb0fb662e3"><td class="memItemLeft" align="right" valign="top"><a id="a8961c459113b8904be6ee7eb0fb662e3" name="a8961c459113b8904be6ee7eb0fb662e3"></a>
+std::deque&lt; <a class="el" href="structWindowElement.html">WindowElement</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getSlidingWindow</b> ()</td></tr>
+<tr class="separator:a8961c459113b8904be6ee7eb0fb662e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a936f6fb353439ed977fbb60d468e0dad"><td class="memItemLeft" align="right" valign="top"><a id="a936f6fb353439ed977fbb60d468e0dad" name="a936f6fb353439ed977fbb60d468e0dad"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>printSlidingWindow</b> ()</td></tr>
+<tr class="separator:a936f6fb353439ed977fbb60d468e0dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28bbb904b47e33e8c45e18cc0dfd68d7"><td class="memItemLeft" align="right" valign="top"><a id="a28bbb904b47e33e8c45e18cc0dfd68d7" name="a28bbb904b47e33e8c45e18cc0dfd68d7"></a>
+<a class="el" href="structWindowElement.html">WindowElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getLast</b> () const</td></tr>
+<tr class="separator:a28bbb904b47e33e8c45e18cc0dfd68d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4592a62ebd9d7b084a5103f393037d18"><td class="memItemLeft" align="right" valign="top"><a id="a4592a62ebd9d7b084a5103f393037d18" name="a4592a62ebd9d7b084a5103f393037d18"></a>
+<a class="el" href="structWindowElement.html">WindowElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getFirst</b> () const</td></tr>
+<tr class="separator:a4592a62ebd9d7b084a5103f393037d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6138b3097b98830fc26c47301694c19"><td class="memItemLeft" align="right" valign="top"><a id="af6138b3097b98830fc26c47301694c19" name="af6138b3097b98830fc26c47301694c19"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>windowMatchesSet</b> (std::vector&lt; unsigned &gt; v)</td></tr>
+<tr class="separator:af6138b3097b98830fc26c47301694c19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a175030cd4e95930f95d40f743bd07bd3"><td class="memItemLeft" align="right" valign="top"><a id="a175030cd4e95930f95d40f743bd07bd3" name="a175030cd4e95930f95d40f743bd07bd3"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>containsSentSeqs</b> ()</td></tr>
+<tr class="separator:a175030cd4e95930f95d40f743bd07bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class provides a Sliding Window structure used by both the <a class="el" href="classSender.html">Sender</a> and <a class="el" href="classReceiver.html">Receiver</a> </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a36a51e9b2a4d35e9cd78ce643cca83b9" name="a36a51e9b2a4d35e9cd78ce643cca83b9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a36a51e9b2a4d35e9cd78ce643cca83b9">&#9670;&#160;</a></span>SlidingWindow() <span class="overload">[1/2]</span></h2>
 
@@ -164,6 +184,25 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getFirstSeqNu
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a7a597447172fd938be19011dc6842057" name="a7a597447172fd938be19011dc6842057"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a597447172fd938be19011dc6842057">&#9670;&#160;</a></span>initializeSlidingWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SlidingWindow::initializeSlidingWindow </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>windowSize</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Allocates new deque, fills it with ints from 0 - winSize - 1 </p>
+
+</div>
+</div>
 <a id="aff04b46b13eb9c29a8ffd58056c45d81" name="aff04b46b13eb9c29a8ffd58056c45d81"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aff04b46b13eb9c29a8ffd58056c45d81">&#9670;&#160;</a></span>move()</h2>
 
@@ -179,13 +218,30 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getFirstSeqNu
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Slides the window forward to the given sequence number </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Slides the window forward to the given sequence number that is 1 past the given sequence number </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">seqNum</td><td>the seq number to slide the window to </td></tr>
   </table>
   </dd>
 </dl>
-<p>Check to ensure seqNum is in the slidingWindow</p>
+
+</div>
+</div>
+<a id="ad7a0010a4a6f77396e0b408143a06c4c" name="ad7a0010a4a6f77396e0b408143a06c4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7a0010a4a6f77396e0b408143a06c4c">&#9670;&#160;</a></span>sendNext()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned SlidingWindow::sendNext </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Marks the next unsent seq in the queue as sent </p>
 
 </div>
 </div>

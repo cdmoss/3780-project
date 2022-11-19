@@ -2,50 +2,60 @@
 \label{SlidingWindow_8h_source}\index{/home/chase/school-\/coding/3780/3780-\/project/SlidingWindow/include/SlidingWindow.h@{/home/chase/school-\/coding/3780/3780-\/project/SlidingWindow/include/SlidingWindow.h}}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{comment}{//}}
-\DoxyCodeLine{2 \textcolor{comment}{// Created by mbroughton on 11/11/22.}}
-\DoxyCodeLine{3 \textcolor{comment}{//}}
-\DoxyCodeLine{4 }
-\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef SLIDINGWINDOW\_SLIDINGWINDOW\_H}}
-\DoxyCodeLine{6 \textcolor{preprocessor}{\#define SLIDINGWINDOW\_SLIDINGWINDOW\_H}}
-\DoxyCodeLine{7 }
-\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <deque>}}
-\DoxyCodeLine{9 }
-\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{classSlidingWindow}{SlidingWindow}} \{}
-\DoxyCodeLine{11 \textcolor{keyword}{private}:}
-\DoxyCodeLine{12     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} windowSize\{4\};}
-\DoxyCodeLine{13     std::deque<unsigned int> *slidingWindow = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{14     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} seqNumBits\{3\};}
-\DoxyCodeLine{15     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} maxSeqNum\{7\};}
-\DoxyCodeLine{16 }
-\DoxyCodeLine{17     \textcolor{keywordtype}{void} initializeSlidingWindow(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} windowSize);}
-\DoxyCodeLine{18 }
-\DoxyCodeLine{19 \textcolor{keyword}{public}:}
-\DoxyCodeLine{20     \mbox{\hyperlink{classSlidingWindow_a5fde76017cc202055cf3ae3011258106}{SlidingWindow}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} windowSize, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} seqNumBits);}
-\DoxyCodeLine{21 }
-\DoxyCodeLine{22     \mbox{\hyperlink{classSlidingWindow_a5fde76017cc202055cf3ae3011258106}{SlidingWindow}}();}
-\DoxyCodeLine{23 }
-\DoxyCodeLine{24     \textcolor{keyword}{virtual} \mbox{\hyperlink{classSlidingWindow}{\string~SlidingWindow}}();}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef SLIDINGWINDOW\_SLIDINGWINDOW\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define SLIDINGWINDOW\_SLIDINGWINDOW\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <deque>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{struct }\mbox{\hyperlink{structWindowElement}{WindowElement}} \{}
+\DoxyCodeLine{8     \textcolor{keywordtype}{unsigned} seqNum;}
+\DoxyCodeLine{9     \textcolor{keywordtype}{bool} sent;}
+\DoxyCodeLine{10     \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} \mbox{\hyperlink{structWindowElement}{WindowElement}} \&rhs)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{11         \textcolor{keywordflow}{return} seqNum == rhs.seqNum \&\& sent == rhs.sent;}
+\DoxyCodeLine{12     \};}
+\DoxyCodeLine{13 \};}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{classSlidingWindow}{SlidingWindow}} \{}
+\DoxyCodeLine{19 \textcolor{keyword}{private}:}
+\DoxyCodeLine{20     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} windowSize\{4\};}
+\DoxyCodeLine{21     std::deque<WindowElement*> slidingWindow;}
+\DoxyCodeLine{22     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} seqNumBits\{3\};}
+\DoxyCodeLine{23     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} maxSeqNum\{7\};}
+\DoxyCodeLine{24 }
 \DoxyCodeLine{25 }
-\DoxyCodeLine{26     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getWindowSize() \textcolor{keyword}{const};}
-\DoxyCodeLine{27 }
-\DoxyCodeLine{28     \textcolor{keywordtype}{void} setWindowSize(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} windowSize);}
+\DoxyCodeLine{26 \textcolor{keyword}{public}:}
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} \mbox{\hyperlink{classSlidingWindow_a7a597447172fd938be19011dc6842057}{initializeSlidingWindow}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} windowSize);}
+\DoxyCodeLine{28     \mbox{\hyperlink{classSlidingWindow_a5fde76017cc202055cf3ae3011258106}{SlidingWindow}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} windowSize, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} seqNumBits);}
 \DoxyCodeLine{29 }
-\DoxyCodeLine{30     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getSeqNumBits() \textcolor{keyword}{const};}
+\DoxyCodeLine{30     \mbox{\hyperlink{classSlidingWindow_a5fde76017cc202055cf3ae3011258106}{SlidingWindow}}();}
 \DoxyCodeLine{31 }
-\DoxyCodeLine{32     \textcolor{keywordtype}{void} setSeqNumBits(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} seqNumBits);}
+\DoxyCodeLine{32     \textcolor{keyword}{virtual} \mbox{\hyperlink{classSlidingWindow}{\string~SlidingWindow}}();}
 \DoxyCodeLine{33 }
-\DoxyCodeLine{34     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{classSlidingWindow_aff04b46b13eb9c29a8ffd58056c45d81}{move}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} seqNum);}
+\DoxyCodeLine{34     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getWindowSize() \textcolor{keyword}{const};}
 \DoxyCodeLine{35 }
-\DoxyCodeLine{36     std::deque<unsigned int> *getSlidingWindow();}
+\DoxyCodeLine{36     \textcolor{keywordtype}{void} setWindowSize(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} windowSize);}
 \DoxyCodeLine{37 }
-\DoxyCodeLine{38     \textcolor{keywordtype}{void} printSlidingWindow(std::deque<unsigned int> *d);}
-\DoxyCodeLine{39 }
-\DoxyCodeLine{40     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getLastSeqNum();}
-\DoxyCodeLine{41 }
-\DoxyCodeLine{42     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getFirstSeqNum();}
-\DoxyCodeLine{43 \};}
-\DoxyCodeLine{44 }
-\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//SLIDINGWINDOW\_SLIDINGWINDOW\_H}}
+\DoxyCodeLine{38     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getSeqNumBits() \textcolor{keyword}{const};}
+\DoxyCodeLine{39     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getMaxSeqNum() \textcolor{keyword}{const};}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} setSeqNumBits(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} seqNumBits);}
+\DoxyCodeLine{42     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} windowContainsSeq(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} seqNum);}
+\DoxyCodeLine{43     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{classSlidingWindow_aff04b46b13eb9c29a8ffd58056c45d81}{move}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} seqNum);}
+\DoxyCodeLine{44     \textcolor{keywordtype}{unsigned} \mbox{\hyperlink{classSlidingWindow_ad7a0010a4a6f77396e0b408143a06c4c}{sendNext}}();}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     std::deque<WindowElement*> getSlidingWindow();}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} printSlidingWindow();}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \mbox{\hyperlink{structWindowElement}{WindowElement}}* getLast() \textcolor{keyword}{const};}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \mbox{\hyperlink{structWindowElement}{WindowElement}}* getFirst() \textcolor{keyword}{const};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{keywordtype}{bool} windowMatchesSet(std::vector<unsigned> v);}
+\DoxyCodeLine{55     \textcolor{keywordtype}{bool} containsSentSeqs();}
+\DoxyCodeLine{56 \};}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

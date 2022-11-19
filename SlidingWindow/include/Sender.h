@@ -6,6 +6,10 @@
 #include <set>
 #include <vector>
 
+/**
+ * This class provides a sender for a selective repeat protocol communciation
+ * channel.
+ */
 class Sender {
 private:
     unsigned int numOfFrames{255};

@@ -95,6 +95,9 @@ unsigned int SlidingWindow::move(unsigned int seqNum) {
   return movedCounter;
 }
 
+/**
+ * Marks the next unsent seq in the queue as sent
+ */
 unsigned SlidingWindow::sendNext() {
   for (auto el : slidingWindow) {
     if (!el->sent) {

@@ -1,5 +1,9 @@
 \hypertarget{classSender}{}\doxysection{Sender Class Reference}
 \label{classSender}\index{Sender@{Sender}}
+
+
+{\ttfamily \#include $<$Sender.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -15,27 +19,60 @@ void {\bfseries set\+Num\+Of\+Frames} (unsigned int num\+Of\+Frames)
 \mbox{\Hypertarget{classSender_a2dd1b31f1d1748465e94e2a332d1eabe}\label{classSender_a2dd1b31f1d1748465e94e2a332d1eabe}} 
 \mbox{\hyperlink{classSlidingWindow}{Sliding\+Window}} $\ast$ {\bfseries get\+Sliding\+Window} ()
 \item 
-std\+::map$<$ unsigned, std\+::set$<$ unsigned int $>$ $\ast$ $>$ \mbox{\hyperlink{classSender_af83f6b6c18b934c64344f2f12b378565}{send}} (\mbox{\hyperlink{classReceiver}{Receiver}} $\ast$r, unsigned int seq\+Num)
+unsigned \mbox{\hyperlink{classSender_a0ddd44e5ab2e94b48c76de4e17325dfc}{send}} ()
 \item 
-\mbox{\Hypertarget{classSender_aa643597ceb475b7ea07386f98c85c601}\label{classSender_aa643597ceb475b7ea07386f98c85c601}} 
-void {\bfseries receive\+Ack} (std\+::map$<$ unsigned int, std\+::set$<$ unsigned int $>$ $\ast$ $>$ acknowledgement)
+unsigned \mbox{\hyperlink{classSender_a8bb94f8536f7aec2b9954f40228dc45d}{send\+Multi}} (unsigned amt)
+\item 
+unsigned \mbox{\hyperlink{classSender_a6ae2f86ff05e20ec470dafd27111f465}{receive\+Ack}} (unsigned acked\+Seq)
+\item 
+\mbox{\Hypertarget{classSender_aa4ff7831e926972b6d4a2e5f0af85edb}\label{classSender_aa4ff7831e926972b6d4a2e5f0af85edb}} 
+bool {\bfseries window\+Matches\+Set} (std\+::vector$<$ unsigned $>$)
+\item 
+\mbox{\Hypertarget{classSender_a14b415686e9970a2a8cb49b8c5d8ed71}\label{classSender_a14b415686e9970a2a8cb49b8c5d8ed71}} 
+void {\bfseries reset\+Sliding\+Window} (unsigned win\+Size)
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classSender_af83f6b6c18b934c64344f2f12b378565}\label{classSender_af83f6b6c18b934c64344f2f12b378565}} 
-\index{Sender@{Sender}!send@{send}}
-\index{send@{send}!Sender@{Sender}}
-\doxysubsubsection{\texorpdfstring{send()}{send()}}
-{\footnotesize\ttfamily std\+::map$<$ unsigned, std\+::set$<$ unsigned int $>$ $\ast$ $>$ Sender\+::send (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classReceiver}{Receiver}} $\ast$}]{r,  }\item[{unsigned int}]{seq\+Num }\end{DoxyParamCaption})}
+\doxysubsection{Detailed Description}
+This class provides a sender for a selective repeat protocol communciation channel. 
 
-Emulates sending a sequence number to the receiver -\/ returns ack from receiver containing acked sequence number and out of order sequence set 
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSender_a6ae2f86ff05e20ec470dafd27111f465}\label{classSender_a6ae2f86ff05e20ec470dafd27111f465}} 
+\index{Sender@{Sender}!receiveAck@{receiveAck}}
+\index{receiveAck@{receiveAck}!Sender@{Sender}}
+\doxysubsubsection{\texorpdfstring{receiveAck()}{receiveAck()}}
+{\footnotesize\ttfamily unsigned Sender\+::receive\+Ack (\begin{DoxyParamCaption}\item[{unsigned}]{acked\+Seq }\end{DoxyParamCaption})}
+
+Emulates sending a sequence number to the receiver -\/ returns spots the sliding window moved == number of frames that being declared as received by ack 
 \begin{DoxyParams}{Parameters}
 {\em r} & \mbox{\hyperlink{classReceiver}{Receiver}} object receiving to send to \\
 \hline
 {\em seq\+Num} & Sequence number to send \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classSender_a0ddd44e5ab2e94b48c76de4e17325dfc}\label{classSender_a0ddd44e5ab2e94b48c76de4e17325dfc}} 
+\index{Sender@{Sender}!send@{send}}
+\index{send@{send}!Sender@{Sender}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily unsigned Sender\+::send (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Emulates sending a sequence number \begin{DoxyReturn}{Returns}
+the sequence number to be sent, or -\/1 if a seq can\textquotesingle{}t be sent 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSender_a8bb94f8536f7aec2b9954f40228dc45d}\label{classSender_a8bb94f8536f7aec2b9954f40228dc45d}} 
+\index{Sender@{Sender}!sendMulti@{sendMulti}}
+\index{sendMulti@{sendMulti}!Sender@{Sender}}
+\doxysubsubsection{\texorpdfstring{sendMulti()}{sendMulti()}}
+{\footnotesize\ttfamily unsigned Sender\+::send\+Multi (\begin{DoxyParamCaption}\item[{unsigned}]{amt }\end{DoxyParamCaption})}
+
+Emulates multiple consecutive sends 
+\begin{DoxyParams}{Parameters}
+{\em amt} & The amount of consecutive sends to receive \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the sequence number to be sent, or -\/1 if a seq can\textquotesingle{}t be sent 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
