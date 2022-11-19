@@ -44,7 +44,7 @@ SlidingWindow*  Receiver::getSlidingWindow() {
 
 /**
 * Receives a sequence number, returns the appropriate ack given the current state of frameBuffer - returned ack consists of the sequence number being acked and the out of order sequence set
-* @param seqNum The sequence number received
+* @param seqNum Tfull idk byhe sequence number received
 */
 std::map<unsigned, std::set<unsigned int>*> Receiver::receive(unsigned int seqNum) {
     if (seqNum != slidingWindow -> getFirstSeqNum()) {
