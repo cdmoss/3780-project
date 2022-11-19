@@ -4,6 +4,7 @@
 
 #include "../include/Receiver.h"
 #include <iostream>
+#include <cassert>
 
 Receiver::Receiver() {
     slidingWindow = new SlidingWindow();
@@ -46,7 +47,7 @@ SlidingWindow*  Receiver::getSlidingWindow() {
 * Receives a sequence number, returns the appropriate ack given the current state of frameBuffer - returned ack consists of the sequence number being acked and the out of order sequence set
 * @param seqNum Tfull idk byhe sequence number received
 */
-std::map<unsigned, std::set<unsigned int>*> Receiver::receive(unsigned int seqNum) {
+std::pair<unsigned int, std::set<unsigned int>*> Receiver::receive(unsigned int seqNum) {
     if (seqNum != slidingWindow -> getFirstSeqNum()) {
         // seqNum recevied is out of order: add it to frame buffer
         this -> frameBuffer -> insert(seqNum);
@@ -62,11 +63,13 @@ std::map<unsigned, std::set<unsigned int>*> Receiver::receive(unsigned int seqNu
     }
 
     // return first sequence number in sliding window + out of order sequence set 
-    std::map<unsigned int, std::set<unsigned int>*> acknowledgement;
-    acknowledgement.insert({this -> slidingWindow -> getFirstSeqNum() - 1, this -> frameBuffer});
+    std::pair<unsigned int, std::set<unsigned int>*> acknowledgement;
+    acknowledgement.first = this -> slidingWindow -> getFirstSeqNum() - 1;
+    acknowledgement.second = this -> frameBuffer;
     return acknowledgement;
 }
 
 unsigned int Receiver::getFirstFrameBufferElement() const {
+    assert(this -> frameBuffer != nullptr);
     return *(this -> frameBuffer -> begin());
 }

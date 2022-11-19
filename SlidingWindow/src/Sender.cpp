@@ -31,10 +31,8 @@ SlidingWindow *Sender::getSlidingWindow() { return this->slidingWindow; }
  * @param r Receiver object receiving to send to
  * @param seqNum Sequence number to send
  */
-std::map<unsigned, std::set<unsigned int> *> Sender::send(Receiver *r,
-                                                          unsigned int seqNum) {
-  std::map<unsigned, std::set<unsigned int> *> acknowledgement =
-      r->receive(seqNum);
+std::pair<unsigned int, std::set<unsigned int> *> Sender::send(Receiver *r) {
+  std::pair<unsigned, std::set<unsigned int> *> acknowledgement = r->receive(this -> getSlidingWindow() -> getLastSeqNum());
   return acknowledgement;
 }
 
@@ -45,10 +43,9 @@ std::map<unsigned, std::set<unsigned int> *> Sender::send(Receiver *r,
  * @param seqNum Sequence number to send
  */
 void Sender::receiveAck(
-    std::map<unsigned int, std::set<unsigned int> *> acknowledgement) {
-  auto ack = acknowledgement.begin();
-  if (lastSeqNumAck != ack->first) {
-    lastSeqNumAck = ack->first;
+    std::pair<unsigned int, std::set<unsigned int> *> acknowledgement) {
+  if (lastSeqNumAck != acknowledgement.first) {
+    lastSeqNumAck = acknowledgement.first;
     unsigned int framesReceived = this->slidingWindow->move(lastSeqNumAck);
     numOfFrames -= framesReceived;
   }
