@@ -49,17 +49,19 @@ TEST_F(ReceiverTest, receiveWrapAround) {
 }
 
 TEST_F(ReceiverTest, getFirstFrameBufferElement) {
-    std::pair<unsigned int, std::set<unsigned int> *> p;
-    std::set<unsigned int> *s = new std::set<unsigned int> {1, 2, 3, 4, 5, 6, 7};
-    for (int i = 1; i < 8; i++) {
-        p = r->receive(i);
-    }
+    r->receive(1);
+    r->receive(3);
 
-    ASSERT_EQ(*(p.second), *(s));
+    ASSERT_EQ(r -> getFirstFrameBufferElement(), 1);
 
-    *s = {};
-    p = r->receive(0);
-    ASSERT_EQ(*(p.second), *(s));
+    r ->receive(0);
+    ASSERT_EQ(r -> getFirstFrameBufferElement(), 3);
+
+    /*
+    r ->receive(2);
+    ASSERT_DEATH(r -> getFirstFrameBufferElement(), "");
+
+     */
 }
 /*
 TEST_F(ReceiverTest, receive_out_order) {

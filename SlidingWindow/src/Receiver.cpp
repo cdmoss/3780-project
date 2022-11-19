@@ -71,6 +71,6 @@ std::pair<unsigned int, std::set<unsigned int> *> Receiver::receive(unsigned int
 }
 
 unsigned int Receiver::getFirstFrameBufferElement() const {
-    assert(this->frameBuffer != nullptr);
+    assert(this->frameBuffer != nullptr && !this->frameBuffer->empty());
     return *(this->frameBuffer->begin());
 }
