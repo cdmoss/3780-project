@@ -1,7 +1,3 @@
-//
-// Created by mbroughton on 11/11/22.
-//
-
 #include "../include/SlidingWindow.h"
 #include <cassert>
 #include <cmath>
@@ -30,17 +26,17 @@ SlidingWindow::SlidingWindow() {
 }
 
 SlidingWindow::~SlidingWindow() {
-    delete this -> slidingWindow;
-    this -> slidingWindow = nullptr;
+    delete this->slidingWindow;
+    this->slidingWindow = nullptr;
 }
 
 unsigned int SlidingWindow::getWindowSize() const {
-    return this -> windowSize;
+    return this->windowSize;
 }
 
 void SlidingWindow::setWindowSize(unsigned int windowSize) {
-    assert(windowSize <= pow(this -> seqNumBits, 2));
-    this -> windowSize = windowSize;
+    assert(windowSize <= pow(this->seqNumBits, 2));
+    this->windowSize = windowSize;
     initializeSlidingWindow(windowSize);
 }
 
@@ -49,15 +45,15 @@ void SlidingWindow::setWindowSize(unsigned int windowSize) {
  * @param seqNum the seq number to slide the window to
  */
 unsigned int SlidingWindow::move(unsigned int seqNum) {
-    assert(this -> slidingWindow != nullptr);
+    assert(this->slidingWindow != nullptr);
     /**
      * Check to ensure seqNum is in the slidingWindow
      */
-    assert(std::find(this -> slidingWindow -> begin(), this -> slidingWindow -> end(), seqNum) != this -> slidingWindow -> end());
+    assert(std::find(this->slidingWindow->begin(), this->slidingWindow->end(), seqNum) != this->slidingWindow->end());
 
     // if given sequence number is the end of the window, wrap around to 0
     unsigned int nextSeqNum;
-    if (seqNum == this -> maxSeqNum) {
+    if (seqNum == this->maxSeqNum) {
         nextSeqNum = 0;
     } else {
         nextSeqNum = seqNum + 1;
@@ -68,15 +64,15 @@ unsigned int SlidingWindow::move(unsigned int seqNum) {
     if element != seqNum, pop element and push the next in order sequence number on back, sliding the window forward
     */
     unsigned int movedCounter = 0;
-    while (this -> slidingWindow -> front() != nextSeqNum) {
+    while (this->slidingWindow->front() != nextSeqNum) {
         movedCounter++;
-        this -> slidingWindow -> pop_front();
+        this->slidingWindow->pop_front();
 
         // if the last number in the window is the max seq num, push 0 on back to prepare for wrap around
-        if (this -> getLastSeqNum() == this -> maxSeqNum) {
-            this -> slidingWindow -> push_back(0);
+        if (this->getLastSeqNum() == this->maxSeqNum) {
+            this->slidingWindow->push_back(0);
         } else {
-            this -> slidingWindow -> push_back(this -> getLastSeqNum() + 1);
+            this->slidingWindow->push_back(this->getLastSeqNum() + 1);
         }
     }
 
@@ -84,48 +80,48 @@ unsigned int SlidingWindow::move(unsigned int seqNum) {
 }
 
 unsigned int SlidingWindow::getSeqNumBits() const {
-    return this -> seqNumBits;
+    return this->seqNumBits;
 }
 
 void SlidingWindow::setSeqNumBits(unsigned int seqNumBits) {
-    assert(this -> windowSize <= pow(seqNumBits, 2));
-    this -> seqNumBits = seqNumBits;
+    assert(this->windowSize <= pow(seqNumBits, 2));
+    this->seqNumBits = seqNumBits;
 }
 
 std::deque<unsigned int> *SlidingWindow::getSlidingWindow() {
-    return this -> slidingWindow;
+    return this->slidingWindow;
 }
 
 /**
 * Allocates new deque, fills it with ints from 0 - winSize - 1
 */
 void SlidingWindow::initializeSlidingWindow(unsigned int windowSize) {
-    if (this -> slidingWindow == nullptr) {
-        this -> slidingWindow = new std::deque<unsigned int>;
+    if (this->slidingWindow == nullptr) {
+        this->slidingWindow = new std::deque<unsigned int>;
     } else {
-        this -> slidingWindow -> clear();
+        this->slidingWindow->clear();
     }
 
     for (unsigned int i = 0; i < windowSize; i++) {
-        this -> slidingWindow -> push_back(i);
+        this->slidingWindow->push_back(i);
     }
 }
 
-void SlidingWindow::printSlidingWindow(std::deque<unsigned int> *d) {
-    assert(this -> slidingWindow != nullptr);
+void SlidingWindow::printSlidingWindow() {
+    assert(this->slidingWindow != nullptr);
     std::cout << "\n";
-    for (unsigned int & it : *d) {
+    for (unsigned int &it: *(this -> slidingWindow)) {
         std::cout << ' ' << it;
     }
     std::cout << std::endl;
 }
 
 unsigned int SlidingWindow::getLastSeqNum() {
-    assert(this -> slidingWindow != nullptr);
-    return this -> slidingWindow -> back();
+    assert(this->slidingWindow != nullptr);
+    return this->slidingWindow->back();
 }
 
 unsigned int SlidingWindow::getFirstSeqNum() {
-    assert(this -> slidingWindow != nullptr);
-    return this -> slidingWindow -> front();
+    assert(this->slidingWindow != nullptr);
+    return this->slidingWindow->front();
 }

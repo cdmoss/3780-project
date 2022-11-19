@@ -1,7 +1,3 @@
-//
-// Created by mbroughton on 11/11/22.
-//
-
 #ifndef SLIDINGWINDOW_SLIDINGWINDOW_H
 #define SLIDINGWINDOW_SLIDINGWINDOW_H
 
@@ -35,11 +31,11 @@ public:
 
     std::deque<unsigned int> *getSlidingWindow();
 
-    void printSlidingWindow(std::deque<unsigned int> *d);
+    void printSlidingWindow();
 
     unsigned int getLastSeqNum();
 
     unsigned int getFirstSeqNum();
 };
 
-#endif //SLIDINGWINDOW_SLIDINGWINDOW_H
+#endif
