@@ -61,3 +61,13 @@ TEST_F(ReceiverTest, getFirstFrameBufferElement) {
     p = r->receive(0);
     ASSERT_EQ(*(p.second), *(s));
 }
+/*
+TEST_F(ReceiverTest, receive_out_order) {
+    std::pair<unsigned int, std::set<unsigned int> *> p;
+    std::set<unsigned int> s;
+      p = r->receive(1);
+      p = r->receive(2);
+      s = p.second;
+
+      ASSERT_EQ(s.begin, 1);
+}*/
