@@ -1,7 +1,3 @@
-//
-// Created by mbroughton on 11/11/22.
-//
-
 #include <gtest/gtest.h>
 #include "../include/SlidingWindow.h"
 #include <deque>
