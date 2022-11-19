@@ -1,3 +1,7 @@
+//
+// Created by mbroughton on 11/11/22.
+//
+
 #include "../include/Sender.h"
 #include <iostream>
 
@@ -28,10 +32,9 @@ SlidingWindow *Sender::getSlidingWindow() { return this->slidingWindow; }
 unsigned Sender::send() { return slidingWindow->sendNext(); }
 
 /**
- * Emulates sending a sequence number to the receiver - returns ack from
- * receiver containing acked sequence number and out of order sequence set
- * @param r Receiver object receiving to send to
- * @param seqNum Sequence number to send
+ * Emulates multiple consecutive sends
+ * @param amt The amount of consecutive sends to receive
+ * @return the sequence number to be sent, or -1 if a seq can't be sent
  */
 unsigned Sender::sendMulti(unsigned amt) {
   unsigned seqToSend = -1;
@@ -46,8 +49,7 @@ unsigned Sender::sendMulti(unsigned amt) {
 }
 
 /**
- * Emulates sending a sequence number to the receiver - returns ack from
- * receiver containing acked sequence number
+ * Emulates sending a sequence number to the receiver - returns spots the sliding window moved == number of frames that being declared as received by ack
  * @param r Receiver object receiving to send to
  * @param seqNum Sequence number to send
  */

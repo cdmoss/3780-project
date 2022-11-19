@@ -2,12 +2,34 @@
 #define SLIDINGWINDOW_RECEIVER_H
 
 #include "SlidingWindow.h"
-#include <set>
+#include <vector>
 #include <utility>
 
 class Receiver {
+
 private:
-    std::set<unsigned int> *frameBuffer = nullptr;
+    unsigned int winSize;
+
+    class WraparoundComparator {
+    private:
+      unsigned winSize = 0;
+
+    public:
+      WraparoundComparator(unsigned _winSize) { winSize = _winSize; }
+
+      bool operator()(unsigned int a, unsigned int b) {
+        if (a - b > winSize) {
+          // b is wrapping around, so its greater than a
+          return false;
+        } else if (b - a > winSize) {
+          return true;
+        }
+
+        return b > a;
+      }
+    };
+
+    std::vector<unsigned int> frameBuffer;
 
     void initializeFrameBuffer();
 
@@ -19,13 +41,13 @@ public:
 
     ~Receiver();
 
-    std::set<unsigned int> *getFrameBuffer() const;
+    std::vector<unsigned int> getFrameBuffer() const;
 
-    void printFrameBuffer(std::set<unsigned int> *s);
+    void printFrameBuffer();
 
     SlidingWindow *getSlidingWindow();
 
-    std::pair<unsigned int, std::set<unsigned int> *> receive(unsigned int seqNum);
+    std::pair<unsigned int, std::vector<unsigned int>> receive(unsigned int seqNum);
 
     unsigned int getFirstFrameBufferElement() const;
 };

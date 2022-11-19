@@ -1,35 +1,30 @@
 #include "../include/Receiver.h"
+#include <algorithm>
 #include <iostream>
 #include <cassert>
+#include <vector>
 
 Receiver::Receiver() {
     slidingWindow = new SlidingWindow();
-    initializeFrameBuffer();
 }
 
 Receiver::Receiver(SlidingWindow *slidingWindow) {
     Receiver::slidingWindow = slidingWindow;
-    initializeFrameBuffer();
 }
 
-std::set<unsigned int> *Receiver::getFrameBuffer() const {
+std::vector<unsigned int> Receiver::getFrameBuffer() const {
     return frameBuffer;
 }
 
 Receiver::~Receiver() {
-    delete this->frameBuffer;
-    delete this->slidingWindow;
-    this->frameBuffer = nullptr;
-    this->slidingWindow = nullptr;
+    delete slidingWindow;
+    slidingWindow = nullptr;
 }
 
-void Receiver::initializeFrameBuffer() {
-    this->frameBuffer = new std::set<unsigned int>;
-}
 
-void Receiver::printFrameBuffer(std::set<unsigned int> *s) {
+void Receiver::printFrameBuffer() {
     std::cout << "\n";
-    for (unsigned int it: *s) {
+    for (unsigned int it: frameBuffer) {
         std::cout << ' ' << it;
     }
     std::cout << std::endl;
@@ -43,24 +38,32 @@ SlidingWindow *Receiver::getSlidingWindow() {
 * Receives a sequence number, returns the appropriate ack given the current state of frameBuffer - returned ack consists of the sequence number being acked and the out of order sequence set
 * @param seqNum Tfull idk byhe sequence number received
 */
-std::pair<unsigned int, std::set<unsigned int> *> Receiver::receive(unsigned int seqNum) {
-    if (seqNum != slidingWindow->getFirst()->sent) {
+std::pair<unsigned int, std::vector<unsigned int>> Receiver::receive(unsigned int seqNum) {
+    if (seqNum != slidingWindow->getFirst()->seqNum) {
         // seqNum received is out of order: add it to frame buffer
-        frameBuffer->insert(seqNum);
+        frameBuffer.push_back(seqNum);
+        printFrameBuffer();
+        // sort using custom comparator
+        std::sort(frameBuffer.begin(), frameBuffer.end(), WraparoundComparator(4));
+        std::reverse(frameBuffer.begin(), frameBuffer.end());
     } else {
         // seqNum received is in order: move window past it
         slidingWindow->move(seqNum);
 
-        // erase every buffered out of order sequence that is now in order after receiving the new sequence 
-        while (getFirstFrameBufferElement() == slidingWindow->getFirst()->seqNum &&
-            !frameBuffer->empty()) {
-            slidingWindow->move(getFirstFrameBufferElement());
-            frameBuffer->erase(getFirstFrameBufferElement());
+        
+        // if we have out of order frames, erase every buffered out of order sequence that is now in order after receiving the new sequence 
+        if (!frameBuffer.empty()) {
+            while (getFirstFrameBufferElement() == slidingWindow->getFirst()->seqNum &&
+                !frameBuffer.empty()) {
+                slidingWindow->move(getFirstFrameBufferElement());
+                frameBuffer.erase(frameBuffer.begin());
+            }
         }
+
     }
 
     // return first sequence number in sliding window + out of order sequence set 
-    std::pair<unsigned int, std::set<unsigned int> *> acknowledgement;
+    std::pair<unsigned int, std::vector<unsigned int>> acknowledgement;
     if (slidingWindow->getFirst() == 0) {
         acknowledgement.first = 7;
     } else {
@@ -71,6 +74,6 @@ std::pair<unsigned int, std::set<unsigned int> *> Receiver::receive(unsigned int
 }
 
 unsigned int Receiver::getFirstFrameBufferElement() const {
-    assert(this->frameBuffer != nullptr && !this->frameBuffer->empty());
-    return *(this->frameBuffer->begin());
+    assert(!frameBuffer.empty());
+    return frameBuffer[0];
 }

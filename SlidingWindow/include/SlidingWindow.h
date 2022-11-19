@@ -35,6 +35,7 @@ public:
     void setWindowSize(unsigned int windowSize);
 
     unsigned int getSeqNumBits() const;
+    unsigned int getMaxSeqNum() const;
 
     void setSeqNumBits(unsigned int seqNumBits);
     unsigned int windowContainsSeq(unsigned int seqNum);

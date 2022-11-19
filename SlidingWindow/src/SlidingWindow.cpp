@@ -132,14 +132,6 @@ void SlidingWindow::initializeSlidingWindow(unsigned int windowSize) {
   }
 }
 
-// void SlidingWindow::printSlidingWindow(std::deque<unsigned int> *d) {
-//   assert(this->slidingWindow != nullptr);
-//   std::cout << "\n";
-//   for (unsigned int &it : *d) {
-//     std::cout << ' ' << it;
-//   }
-//   std::cout << std::endl;
-// }
 
 WindowElement *SlidingWindow::getLast() const {
   assert(slidingWindow.size() != 0);
@@ -158,9 +150,9 @@ void SlidingWindow::printSlidingWindow() {
 }
 
 bool SlidingWindow::windowMatchesSet(std::vector<unsigned int> v) {
-    for (auto i : v) {
+    for (int i = 0; i < windowSize; i++) {
         if (v[i] != slidingWindow[i]->seqNum) {
-      return false;
+            return false;
         }
     }
 
@@ -175,4 +167,8 @@ bool SlidingWindow::containsSentSeqs() {
     }
 
     return false;
+}
+
+unsigned int SlidingWindow::getMaxSeqNum() const {
+    return maxSeqNum;
 }
