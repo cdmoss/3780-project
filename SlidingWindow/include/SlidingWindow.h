@@ -5,54 +5,54 @@
 #include <vector>
 
 struct WindowElement {
-    unsigned seqNum;
-    bool sent;
-    bool operator==(const WindowElement &rhs) const {
-        return seqNum == rhs.seqNum && sent == rhs.sent;
-    };
+  unsigned seqNum;
+  bool sent;
+  bool operator==(const WindowElement &rhs) const {
+    return seqNum == rhs.seqNum && sent == rhs.sent;
+  };
 };
 
 /**
- * This class provides a Sliding Window structure used by both the Sender and Receiver
+ * This class provides a Sliding Window structure used by both the Sender and
+ * Receiver
  */
 class SlidingWindow {
 private:
-    unsigned int windowSize{4};
-    std::deque<WindowElement*> slidingWindow;
-    unsigned int seqNumBits{3};
-    unsigned int maxSeqNum{7};
-
+  unsigned int windowSize{4};
+  std::deque<WindowElement *> slidingWindow;
+  unsigned int seqNumBits{3};
+  unsigned int maxSeqNum{7};
 
 public:
-    void initializeSlidingWindow(unsigned int windowSize);
-    SlidingWindow(unsigned int windowSize, unsigned int seqNumBits);
+  void initializeSlidingWindow(unsigned int windowSize);
+  SlidingWindow(unsigned int windowSize, unsigned int seqNumBits);
 
-    SlidingWindow();
+  SlidingWindow();
 
-    virtual ~SlidingWindow();
+  virtual ~SlidingWindow();
 
-    unsigned int getWindowSize() const;
+  unsigned int getWindowSize() const;
 
-    void setWindowSize(unsigned int windowSize);
+  void setWindowSize(unsigned int windowSize);
 
-    unsigned int getSeqNumBits() const;
-    unsigned int getMaxSeqNum() const;
+  unsigned int getSeqNumBits() const;
+  unsigned int getMaxSeqNum() const;
 
-    void setSeqNumBits(unsigned int seqNumBits);
-    unsigned int windowContainsSeq(unsigned int seqNum);
-    unsigned int move(unsigned int seqNum);
-    unsigned sendNext();
+  void setSeqNumBits(unsigned int seqNumBits);
+  unsigned int windowContainsSeq(unsigned int seqNum);
+  unsigned int move(unsigned int seqNum);
+  unsigned sendNext();
 
-    std::deque<WindowElement*> getSlidingWindow();
+  std::deque<WindowElement *> getSlidingWindow();
 
-    void printSlidingWindow();
+  void printSlidingWindow();
 
-    WindowElement* getLast() const;
+  WindowElement *getLast() const;
 
-    WindowElement* getFirst() const;
+  WindowElement *getFirst() const;
 
-    bool windowMatchesSet(std::vector<unsigned> v);
-    bool containsSentSeqs();
+  bool windowMatchesSet(std::vector<unsigned> v);
+  bool containsSentSeqs();
 };
 
 #endif

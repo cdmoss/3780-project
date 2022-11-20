@@ -42,18 +42,19 @@ void SlidingWindow::setWindowSize(unsigned int windowSize) {
 }
 
 unsigned int SlidingWindow::windowContainsSeq(unsigned int seqNum) {
-    for (auto el : slidingWindow) {
-        if (el->seqNum == seqNum) {
-            return true;
-            break;
-        }
+  for (auto el : slidingWindow) {
+    if (el->seqNum == seqNum) {
+      return true;
+      break;
     }
+  }
 
-    return false;
+  return false;
 }
 
 /**
- * Slides the window forward to the given sequence number that is 1 past the given sequence number
+ * Slides the window forward to the given sequence number that is 1 past the
+ * given sequence number
  * @param seqNum the seq number to slide the window to
  */
 unsigned int SlidingWindow::move(unsigned int seqNum) {
@@ -135,7 +136,6 @@ void SlidingWindow::initializeSlidingWindow(unsigned int windowSize) {
   }
 }
 
-
 WindowElement *SlidingWindow::getLast() const {
   assert(slidingWindow.size() != 0);
   return slidingWindow.back();
@@ -147,31 +147,29 @@ WindowElement *SlidingWindow::getFirst() const {
 }
 
 void SlidingWindow::printSlidingWindow() {
-    for (auto el: slidingWindow) {
-        std::cout << "{ seqNum: " << el->seqNum << ", set: " << el->sent << " }";
-    }
+  for (auto el : slidingWindow) {
+    std::cout << "{ seqNum: " << el->seqNum << ", set: " << el->sent << " }";
+  }
 }
 
 bool SlidingWindow::windowMatchesSet(std::vector<unsigned int> v) {
-    for (int i = 0; i < windowSize; i++) {
-        if (v[i] != slidingWindow[i]->seqNum) {
-            return false;
-        }
+  for (int i = 0; i < windowSize; i++) {
+    if (v[i] != slidingWindow[i]->seqNum) {
+      return false;
     }
+  }
 
-    return true;
+  return true;
 }
 
 bool SlidingWindow::containsSentSeqs() {
-    for (auto el : slidingWindow) {
-        if (el->sent) {
-            return true;
-        }
+  for (auto el : slidingWindow) {
+    if (el->sent) {
+      return true;
     }
+  }
 
-    return false;
+  return false;
 }
 
-unsigned int SlidingWindow::getMaxSeqNum() const {
-    return maxSeqNum;
-}
+unsigned int SlidingWindow::getMaxSeqNum() const { return maxSeqNum; }

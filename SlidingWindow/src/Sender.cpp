@@ -45,35 +45,37 @@ unsigned Sender::sendMulti(unsigned amt) {
 }
 
 /**
- * Emulates sending a sequence number to the receiver - returns spots the sliding window moved == number of frames that being declared as received by ack
+ * Emulates sending a sequence number to the receiver - returns spots the
+ * sliding window moved == number of frames that being declared as received by
+ * ack
  * @param r Receiver object receiving to send to
  * @param seqNum Sequence number to send
  */
 unsigned Sender::receiveAck(unsigned ackedSeq) {
-    if (!slidingWindow->windowContainsSeq(ackedSeq)) {
-        std::cout << "Sender: Faulty seq sent in received ack";
-        return 0;
-    }
+  if (!slidingWindow->windowContainsSeq(ackedSeq)) {
+    std::cout << "Sender: Faulty seq sent in received ack";
+    return 0;
+  }
 
-    if (!slidingWindow->containsSentSeqs()) {
-        std::cout << "Sender: Can't receive ack, not waiting on any seqs";
-        return 0;
-    }
+  if (!slidingWindow->containsSentSeqs()) {
+    std::cout << "Sender: Can't receive ack, not waiting on any seqs";
+    return 0;
+  }
 
-    unsigned int framesReceived = 0;
-    if (lastSeqNumAck != ackedSeq) {
-        lastSeqNumAck = ackedSeq;
-        framesReceived = slidingWindow->move(ackedSeq);
-        numOfFrames -= framesReceived;
-    }
+  unsigned int framesReceived = 0;
+  if (lastSeqNumAck != ackedSeq) {
+    lastSeqNumAck = ackedSeq;
+    framesReceived = slidingWindow->move(ackedSeq);
+    numOfFrames -= framesReceived;
+  }
 
-    if (numOfFrames == 0) {
-        std::cout << "All frames successfully sent!" << std::endl;
-    }
+  if (numOfFrames == 0) {
+    std::cout << "All frames successfully sent!" << std::endl;
+  }
 
   return framesReceived;
 }
 
 void Sender::resetSlidingWindow(unsigned winSize) {
-    slidingWindow->initializeSlidingWindow(winSize);
+  slidingWindow->initializeSlidingWindow(winSize);
 }
